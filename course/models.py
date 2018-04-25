@@ -54,6 +54,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=40, verbose_name=u"课程名")
     time = models.DateTimeField(default=datetime.now, verbose_name=u"课程时间")
 
+
     class Meta:
         verbose_name = u"章节"
         verbose_name_plural = verbose_name

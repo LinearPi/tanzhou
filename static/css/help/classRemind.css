@@ -1,0 +1,41 @@
+*{margin:0;padding:0;}
+body,input{font-size:14px;font-family:"微软雅黑";color:#333;}
+body{background: #F3F4F6;}
+a{color:#333;text-decoration:none}
+ul,ol,input,img,h1,h2,h3,h4,h5,h6{list-style:none;border:0;font-weight:normal;outline:none; resize:none;}
+span,i,em,a{display:inline-block; word-spacing:0;}
+button{font-family: "微软雅黑";}
+.fl{float:left;}
+.fr{float:right;}
+.clear{clear:both;}
+.w1195{width:1195px;margin:auto;}
+.none{display:none}
+
+.classRemind-bg{width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999;}
+.classRemind{width: 565px;height:360px;border-radius: 5px;box-shadow: 0 0 10px #333;margin: auto;margin-top: 200px;position: relative;background: #fff;}
+.classRemind h1{width: 545px;height:46px;line-height: 46px;padding-left: 20px;border-bottom: 1px solid #ddd;font-size: 16px;}
+.btn-x{position: absolute;top: 16px;right: 16px;width: 15px;height: 15px;cursor: pointer;}
+.btn-x img{width: 15px;height: 15px;}
+.classRemind h2{margin: 25px 70px 15px 70px;font-size: 14px;text-align: center;}
+.classRemind h2 span{color: #ff6600;}
+.classRemind-list{width: 500px;height: 240px;margin: auto;}
+.classRemind-div{width: 190px;height: 205px;float: left;}
+.classRemind-pic{width: 190px;height: 120px;}
+.classRemind-pic img{width: 190px !important;height: 120px !important;}
+.classRemind-div h1{width: 160px;height: 40px;line-height: 20px;font-size: 14px;text-align: center;border: none;margin: 5px 0 ;}
+.classRemind-div button{width: 130px;height: 34px;background: #299be4;color: #fff;border: none;border-radius: 3px;margin-left: 30px;cursor: pointer;}
+.classRemind-div button:hover{background: #58ADE3;}
+
+#classWrap-list{width: 500px;height: 240px;position: relative;overflow: hidden;}
+			.classWlist{width: 10000px;height: 240px;position: absolute;}
+			.classWlist li{width: 210px;float: left;margin: 0 10px;}
+			#classWlistall{width:447px;height: 240px;position: relative;overflow: hidden;margin: auto;}
+			.wicon{background: url(../../images/butlr.png) no-repeat;display: inline-block;width: 27px;height: 30px;position: absolute;top: 39px;}
+			.wleft{background-position: 0 0;left: 0;}
+			.wright{background-position: 0 -31px;right: 0;}
+			.wrhover{background-position: -27px -31px;cursor: pointer;}
+			.wlhover{background-position: -27px 0;left: 0;cursor: pointer;}
+			.yeshu{position: absolute;bottom: 15px;left: 285px;}
+			.yeshu span{color: #FF6600;}
+			.classWlist li a{width: 190px !important;height: 120px !important;float: none !important;border: none !important;margin: 0 !important;}
+.classRemind-div h1 a{width: auto !important;height: auto !important;}
