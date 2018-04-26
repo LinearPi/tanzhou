@@ -15,7 +15,7 @@ from users.models import UserInfo
 class CustomBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
-            user = UserInfo.objects.get(Q(username=username)| Q(email=username))
+            user = UserInfo.objects.get(Q(username=username) | Q(email=username))
             if user.check_password(password):
                 return user
         except Exception as e:
@@ -43,10 +43,9 @@ class LoginView(View):
                 login(request, user)
                 return HttpResponseRedirect(reverse("index"))
             else:
-                return render(request, "login.html", {'msg': '用户不存在'})
+                return render(request, "login.html", {'msg': '账号密码有误'})
 
-        else:
-            return render(request, "login.html",{'msg':'请认真填写'})
+        return render(request, "login.html", {'login_form': login_form})
 
 
 # 退出
