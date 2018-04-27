@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from users.views import IndexView, LoginView, LogoutView
+from users.views import IndexView, LoginView, LogoutView, RegisterView, ActiveUserView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
-
+    # 验证码
+    url(r'^captcha/', include('captcha.urls')),
+    # 注册页面
+    url(r'^register/$', RegisterView.as_view(), name="register"),
+    # 激活页面
+    url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name='active_code'),
 ]

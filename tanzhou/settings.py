@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'course',
     'bootstrap4',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -94,7 +97,7 @@ DATABASES = {
         'NAME': 'tanzhoudb',
         'USER': 'develop',
         'PASSWORD': 'QWEqwe123',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.83.128',
         'PORT': '3306',
     }
 }
@@ -139,3 +142,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+
+
+# QQ 邮箱发送
+EMAIL_HOST = "smtp.qq.com"
+EMAIL_PORT = 465  # SSL  # 第三种配置方式
+# EMAIL_PORT = 587  #  TSL  # 第二种配置方式
+# EMAIL_PORT = 25   #第一种配置方式
+EMAIL_HOST_USER = "3003002865@qq.com"
+EMAIL_HOST_PASSWORD = "xtyxxnyonltqdfgf"
+# EMAIL_USE_TLS = True  #第一种配置方式 # 第二种配置方式
+EMAIL_USE_SSL = True   #第三种配置方式
+EMAIL_FROM = "3003002865@qq.com"
+
+
