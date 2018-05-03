@@ -20,7 +20,6 @@ def random_str(randomlenght=8):
 
 # 发送邮件
 def send_register_email(email, send_type="register"):
-
     # 实例化Email model.
     email_record = EmailVerify()
 
@@ -32,7 +31,6 @@ def send_register_email(email, send_type="register"):
 
     email_record.save()
 
-
     # 设置邮箱的发送信息
     email_title = ""
     email_body = ""
@@ -41,8 +39,14 @@ def send_register_email(email, send_type="register"):
 
         email_title = u"在线注册激活链接"
         email_body = u"请点击下面的链接激活你的账号：http://192.168.83.128:8000/active/{0}".format(code)
-
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+        if send_status:
+            pass
 
+    if send_type == "forget":
+
+        email_title = u"密码找回激活链接"
+        email_body = u"请点击下面的链接找回你的密码：http://192.168.83.128:8000/reset/{0}".format(code)
+        send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
         if send_status:
             pass

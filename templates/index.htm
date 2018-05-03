@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load staticfiles %}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="https://www.shiguangkey.com//static/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link href="https://www.shiguangkey.co{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
 <title>潭州课堂-在线直播教学平台|潭州课堂-互联网在线教育</title>
-<link rel="stylesheet" href="../static/images/favicon.ico-v=2.0.5.png" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="../static/--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css" rel="stylesheet">
-<script type="text/javascript" src="../static/js/fi000001.5"   ></script>
+<link rel="stylesheet" href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'js/fi000001.5' %}"   ></script>
 
 <!-- <script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/paging/src/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/jquery.timers-1.1.2.js"></script>
@@ -25,8 +26,8 @@
 <script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/base64HalfMd5.js"></script>
 <script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/loginDiv.js"></script> -->
 
-<script type="text/javascript" src="../static/js/src/common/track.js"   ></script>
-<script type="text/javascript" src="../static/js/common/layer/layer.js"   > </script>
+<script type="text/javascript" src="{% static 'js/src/common/track.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/common/layer/layer.js' %}"></script>
 
 <script>
 var ossHome="https://res.shiguangkey.com/";
@@ -85,7 +86,7 @@ var live_url="//www.shiguangkey.com/live/";
 
 </script>
 
-<script src="../static/js/common/index.js-v=2.0.5"   ></script>
+<script src="{% static 'js/common/index.js-v=2.0.5' %}"   ></script>
 
 <!-- 商务要加的-->
 <meta name="baidu-site-verification" content="wA2vFPSsen" />
@@ -97,7 +98,7 @@ var live_url="//www.shiguangkey.com/live/";
 <!--   <div class="hbg">-->
 	<div class="w1195 header">
     	<h1 class="logo fl"><a  href="index.htm"    target="_blank">
-    		<img src="../static/images/logo.png" alt="潭州课堂电商logo" /></a>
+    		<img src="{% static 'images/logo.png' %}" alt="潭州课堂电商logo" /></a>
    		</h1>
 		<!-- 搜索关键字 -->
 <div class="search fl">
@@ -117,14 +118,14 @@ var live_url="//www.shiguangkey.com/live/";
             {% if request.user.is_authenticated %}
                 <div class="" id="">
                 <div class="personal fr">
-                	<a href="../i/index.htm" target="_blank" class="perimg" ><img src="../static/images/default.png" id="imgId1"></a>
+                	<a href="../i/index.htm" target="_blank" class="perimg" ><img src="{% static 'images/default.png' %}" id="imgId1"></a>
                 	<div class="peohover">
                     	<i class="icon pericon"></i>
                 		 <ul class="perul">
                              <li><a href="../i/course.htm" target="_blank">课表</a></li>
                              <li><a href="../i/order.htm" target="_blank">我的订单</a></li>
-                             <li><a href="../i/profile.htm" target="_blank">个人信息</a></li>
-                             <li><a href="/logout/" class="pertopbor" id="logout">退出</a></li>
+                             <li><a href="{% url 'i:info' %}" target="_blank">个人信息</a></li>
+                             <li><a href="{% url 'logout' %}" class="pertopbor" id="logout">退出</a></li>
                        </ul>
                 	</div>
                 </div>
@@ -692,7 +693,7 @@ var live_url="//www.shiguangkey.com/live/";
                         	<div class="fr login-name">
                             	<a href="../i/course.htm" target="_blank" id="nick"></a>
                             </div>
-                        	<a href="../i/course.htm" target="_blank"><img src="../static/images/default.png" alt="个人图像" id="imgId"/></a>
+                        	<a href="../i/course.htm" target="_blank"><img src="{% static 'images/default.png' %}" alt="个人图像" id="imgId"/></a>
                             <div class="clear"></div>
                          </div>
                     	<div class="login-perinfor">
@@ -719,7 +720,7 @@ var live_url="//www.shiguangkey.com/live/";
                                             <a>您的课表今日暂无直播课程</a>
                                         </div>
                                     </div>
-                                    <a href="list.htm" target="_blank"><img src="../static/images/defaully.png" alt="全部课程" /></a>
+                                    <a href="list.htm" target="_blank"><img src="{% static 'images/defaully.png' %}" alt="全部课程" /></a>
                                 </div>
                             </div>
                             <!-- 有课程时展示效果 - 开始-->
@@ -731,9 +732,9 @@ var live_url="//www.shiguangkey.com/live/";
                     {% else %}
                           <div id="loginNone"  class="login-no plr12 none">
                     	<div class="notlogged-in">嗨，欢迎来到潭州课堂！</div>
-                    	<div class="login-img limgcent"><img src="../static/images/default.png" alt="个人图像" /></div>
+                    	<div class="login-img limgcent"><img src="{% static 'images/default.png' %}" alt="个人图像" /></div>
                     	<div class="login-but">
-                        	<a href=" " class="loginimmedi" onclick="tologin()">马上登录</a>
+                        	<a href="{% url 'login' %}" class="loginimmedi" onclick="tologin()">马上登录</a>
                         </div>
                     </div>
                     {% endif %}
@@ -770,10 +771,10 @@ var live_url="//www.shiguangkey.com/live/";
             	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/21/20180321175430465488152.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/21/20180321175430465488152.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="1223_public_flase">
 		                	<a href=" "  class="clive"  value="1223">上课中</a>
@@ -795,10 +796,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/05/20180305181902919396908.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/05/20180305181902919396908.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="1779_public_flase">
 		                	<a href=" "  class="clive"  value="1779">上课中</a>
@@ -821,10 +822,10 @@ var live_url="//www.shiguangkey.com/live/";
 
 	                <div class="courimg">
 	                    <a href=""    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/23/20180323094837582568507.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/23/20180323094837582568507.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                    <a href=" "  class="clive live_status_true"  data-val="1760">上课中</a>
 		                <div class="none" id="1760_public_flase">
@@ -847,10 +848,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/21/20180321174710777324821.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/21/20180321174710777324821.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                    <a href=" "  class="clive live_status_true"  data-val="1080">上课中</a>
 		                <div class="none" id="1080_public_flase">
@@ -873,10 +874,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/28/20180328124401710486003.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/28/20180328124401710486003.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="1753_public_flase">
 		                	<a href=" "  class="clive"  value="1753">上课中</a>
@@ -898,10 +899,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/28/20180328124503844451889.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/28/20180328124503844451889.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="1865_public_flase">
 		                	<a href=" "  class="clive"  value="1865">上课中</a>
@@ -923,10 +924,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/28/20180328124544293700910.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/28/20180328124544293700910.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="1711_public_flase">
 		                	<a href=" "  class="clive"  value="1711">上课中</a>
@@ -948,10 +949,10 @@ var live_url="//www.shiguangkey.com/live/";
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="../static/img/file/201803/28/20180328124713550815455.jpg!mall_course_c.png"    />
+	                        <img src="{% static 'img/file/201803/28/20180328124713550815455.jpg!mall_course_c.png' %}"    />
 	                    </a>
 	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="../static/images/public.png"   ></span>
+                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
 		                <div class="none" id="960_public_flase">
 		                	<a href=" "  class="clive"  value="960">上课中</a>
@@ -983,10 +984,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/24/20180324173211470534131.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/24/20180324173211470534131.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1067_floor_flase">
 			                	<a href=" "  class="clive"  value="1067">上课中</a>
@@ -1009,10 +1010,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/24/20180324173453599140253.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/24/20180324173453599140253.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1111_floor_flase">
 			                	<a href=" "  class="clive"  value="1111">上课中</a>
@@ -1035,10 +1036,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/24/20180324173038936081752.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/24/20180324173038936081752.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1722_floor_flase">
 			                	<a href=" "  class="clive"  value="1722">上课中</a>
@@ -1061,10 +1062,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/24/20180324173333621833398.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/24/20180324173333621833398.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1593_floor_flase">
 			                	<a href=" "  class="clive"  value="1593">上课中</a>
@@ -1097,10 +1098,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/28/20180328111134792581562.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/28/20180328111134792581562.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1784_floor_flase">
 			                	<a href=" "  class="clive"  value="1784">上课中</a>
@@ -1123,10 +1124,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/29/20180329171047288547812.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/29/20180329171047288547812.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1844_floor_flase">
 			                	<a href=" "  class="clive"  value="1844">上课中</a>
@@ -1149,10 +1150,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/29/20180329164304303381040.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/29/20180329164304303381040.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1718_floor_flase">
 			                	<a href=" "  class="clive"  value="1718">上课中</a>
@@ -1175,10 +1176,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/28/20180328110220972804823.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/28/20180328110220972804823.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1916_floor_flase">
 			                	<a href=" "  class="clive"  value="1916">上课中</a>
@@ -1211,10 +1212,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/28/20180328111409564266222.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/28/20180328111409564266222.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="724_floor_flase">
 			                	<a href=" "  class="clive"  value="724">上课中</a>
@@ -1237,10 +1238,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/28/20180328112346187386335.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/28/20180328112346187386335.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1159_floor_flase">
 			                	<a href=" "  class="clive"  value="1159">上课中</a>
@@ -1263,10 +1264,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201708/07/20170807154010298195765.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201708/07/20170807154010298195765.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="895_floor_flase">
 			                	<a href=" "  class="clive"  value="895">上课中</a>
@@ -1289,10 +1290,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/28/20180328112953872343073.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/28/20180328112953872343073.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1043_floor_flase">
 			                	<a href=" "  class="clive"  value="1043">上课中</a>
@@ -1325,10 +1326,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201712/30/20171230214014349926726.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201712/30/20171230214014349926726.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1544_floor_flase">
 			                	<a href=" "  class="clive"  value="1544">上课中</a>
@@ -1351,10 +1352,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201712/13/20171213145357306701459.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201712/13/20171213145357306701459.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1478_floor_flase">
 			                	<a href=" "  class="clive"  value="1478">上课中</a>
@@ -1377,10 +1378,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/12/20180312211724429553091.png!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/12/20180312211724429553091.png!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1851_floor_flase">
 			                	<a href=" "  class="clive"  value="1851">上课中</a>
@@ -1403,10 +1404,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/05/20180305150315612175568.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/05/20180305150315612175568.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1776_floor_flase">
 			                	<a href=" "  class="clive"  value="1776">上课中</a>
@@ -1439,10 +1440,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201708/25/20170825142720037769478.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201708/25/20170825142720037769478.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="991_floor_flase">
 			                	<a href=" "  class="clive"  value="991">上课中</a>
@@ -1465,10 +1466,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201708/25/20170825141700630671611.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201708/25/20170825141700630671611.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1015_floor_flase">
 			                	<a href=" "  class="clive"  value="1015">上课中</a>
@@ -1491,10 +1492,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201708/25/20170825142535710330973.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201708/25/20170825142535710330973.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="994_floor_flase">
 			                	<a href=" "  class="clive"  value="994">上课中</a>
@@ -1517,10 +1518,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201708/25/20170825141002179761357.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201708/25/20170825141002179761357.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1022_floor_flase">
 			                	<a href=" "  class="clive"  value="1022">上课中</a>
@@ -1553,10 +1554,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/07/20180307170412774277221.png!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/07/20180307170412774277221.png!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 			                    <a href=" " class="clive ">上课中</a>
 		                	<div class="none" id="1831_floor_flase">
@@ -1580,10 +1581,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/07/20180307165007657874477.png!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/07/20180307165007657874477.png!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1829_floor_flase">
 			                	<a href=" "  class="clive"  value="1829">上课中</a>
@@ -1606,10 +1607,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/04/20180304094152783892904.jpg!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/04/20180304094152783892904.jpg!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 			                    <a href=" " class="clive ">上课中</a>
 		                	<div class="none" id="1770_floor_flase">
@@ -1633,10 +1634,10 @@ var live_url="//www.shiguangkey.com/live/";
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="../static/img/file/201803/26/20180326165950318287744.png!mall_course_c.png"    />
+		                        <img src="{% static 'img/file/201803/26/20180326165950318287744.png!mall_course_c.png' %}"    />
 		                    </a>
 		                    <div class="cour-icon">
-                    			<span class="vipimg"><img src="../static/images/vip.png"   ></span>
+                    			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
                    			</div>
 		                	<div class="none" id="1930_floor_flase">
 			                	<a href=" "  class="clive"  value="1930">上课中</a>
@@ -1698,11 +1699,11 @@ var live_url="//www.shiguangkey.com/live/";
             </div>
             <div class="fr foot-er">
             	<div class="fl official">
-                	<img src="../static/images/weixin.jpg"   >
+                	<img src="{% static 'images/weixin.jpg' %}"   >
                 	<p>官方微信</p>
                 </div>
             	<div class="fl official">
-                	<img src="../static/images/weibo.png"   >
+                	<img src="{% static 'images/weibo.png' %}"   >
                     <p>官方微博</p>
                 </div>
             </div>
@@ -1712,16 +1713,16 @@ var live_url="//www.shiguangkey.com/live/";
             	<p>Copyright © 2017 All Rights Reserved </p>
             	<p class="icptxt">版权所有：湖南时光钥匙网络有限公司      备案号：湘ICP备17002945号-1</p>
             	<div style="width:300px;margin:10px 0 0 168px;">
-		 			<a target="_blank" href=" "    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../static/images/beiantubiao.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43019002000435号</p></a>
+		 			<a target="_blank" href=" "    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{% static 'images/beiantubiao.png' %}" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43019002000435号</p></a>
 		 		</div>
             </div>
             <div class="tb-foot fl">
 	            <a  key ="59015a73efbfb03b5229e25c"  logo_size="124x47"  logo_type="common"  href=" "    >
-	            <script src="../static/js/aq_auth.js"   ></script>
+	            <script src="{% static 'js/aq_auth.js' %}"   ></script>
 	            </a>
             </div>
         	<div class="fr footlogo">
-            	<img src="../static/images/footlogo.jpg" alt="底部logo" />
+            	<img src="{% static 'images/footlogo.jpg' %}" alt="底部logo" />
             </div>
         </div>
 </div>
@@ -1736,7 +1737,7 @@ var live_url="//www.shiguangkey.com/live/";
                     <span class="commn-span">下载APP</span>
                 </a>
                 <div class="downer">
-                	<img src="../static/images/downapp.png"    />
+                	<img src="{% static 'images/downapp.png' %}"    />
                     <p>扫描下载APP</p>
                 </div>
             </div>
@@ -1766,7 +1767,7 @@ var live_url="//www.shiguangkey.com/live/";
 <!--问题反馈 弹窗-->
     <div class="problem none pshow">
     	<div class="pro-title">
-        	<a href=" " class="prolose closepup fr"><img src="../static/images/prolose.png"    /></a>
+        	<a href=" " class="prolose closepup fr"><img src="{% static 'images/prolose.png' %}"    /></a>
         	您好，我是潭州课堂的产品经理，欢迎您向我们反馈问题、提出宝贵建议
         </div>
         <div class="pro-txt">
@@ -1788,12 +1789,12 @@ var live_url="//www.shiguangkey.com/live/";
     </div>
     <div class="mask none closepup"></div>    <!-- 登录弹窗 -->
     <div id="loginDiv" class="none"></div>
-<link href="../static/css/user/register.css" rel="stylesheet">
+<link href="{% static 'css/user/register.css' %}" rel="stylesheet">
 <!-- <div id="bandPhone" class="none">
 	<div class="pond-phone-bg">
 	</div>
 	<div class="pond-phone">
-		<img src="https://www.shiguangkey.com//static/images/pond-phone-pic.png">
+		<img src="https://www.shiguangkey.co{% static 'images/pond-phone-pic.png' %}">
 		<div class="pond-phone-text">
 			<button class="pond-phone-btnNO">取消</button>
 			<button class="pond-phone-btnYes"><a href="/studentAdmin/main.html#contact" target="_blank">去绑定手机号码</a></button>
@@ -1801,10 +1802,10 @@ var live_url="//www.shiguangkey.com/live/";
 	</div>
 </div> -->
 
-<link href="../static/css/user/SystemAnnouncement.css" rel="stylesheet">
+<link href="{% static 'css/user/SystemAnnouncement.css' %}" rel="stylesheet">
 
 <div class="SystemAnnouncement none" id="message">
-	<div class="btn-x"><img src="../static/images/X-w.png"   ></div>
+	<div class="btn-x"><img src="{% static 'images/X-w.png' %}"   ></div>
 	<h1 id="messageType"></h1>
 	<h2 id="messageTitle"></h2>
 	<h3 id="messageCreateTime"></h3>

@@ -1,0 +1,14 @@
+{% extends 'password_reset.html' %}
+{% load staticfiles %}
+
+	{% block title %}
+    <title>密码修改成功</title>
+    {% endblock %}
+
+{% block coustom %}
+     <div class="resetpassword" id="reset_password_tips" style="">
+        <h1>修改密码成功,请重新登录</h1>
+        <img class="fl" src="/static/images/check2.png">
+        <p class="successword">已经成功修改密码，请重新登录</p>
+    </div>
+{% endblock %}
