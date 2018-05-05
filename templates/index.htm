@@ -7,86 +7,9 @@
 <link href="https://www.shiguangkey.co{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
 <title>潭州课堂-在线直播教学平台|潭州课堂-互联网在线教育</title>
 <link rel="stylesheet" href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
-<script type="text/javascript" src="{% static 'js/fi000001.5' %}"   ></script>
 
-<!-- <script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/paging/src/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/jquery.timers-1.1.2.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/jquery.qrcode.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/jquery.cookie.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/qrcode.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/utf.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/paging/src/query.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/paging/src/paging.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/all.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/src/common/track.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/common.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/userInfo.js?v=2.0.5"></script>
-<link href="https://www.shiguangkey.com//static/css/user/login.css" rel="stylesheet">
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/three/base64HalfMd5.js"></script>
-<script type="text/javascript" src="https://www.shiguangkey.com//static/js/common/loginDiv.js"></script> -->
-
-<script type="text/javascript" src="{% static 'js/src/common/track.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/common/layer/layer.js' %}"></script>
-
-<script>
-var ossHome="https://res.shiguangkey.com/";
-var token  = $.cookie("token");
-var localhref = location.href;
-var live_url="//www.shiguangkey.com/live/";
-//ga统计
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-90486517-17', 'auto');
-  ga('send', 'pageview');
-
-  //IE8 不支持console.log
-  window._console = window.console;
-	window.console = (function (orgConsole) {
-	    return {
-	        log: getConsoleFn("log"),
-	        debug: getConsoleFn("debug"),
-	        info: getConsoleFn("info"),
-	        warn: getConsoleFn("warn"),
-	        exception: getConsoleFn("exception"),
-	        assert: getConsoleFn("assert"),
-	        dir: getConsoleFn("dir"),
-	        dirxml: getConsoleFn("dirxml"),
-	        trace: getConsoleFn("trace"),
-	        group: getConsoleFn("group"),
-	        groupCollapsed: getConsoleFn("groupCollapsed"),
-	        groupEnd: getConsoleFn("groupEnd"),
-	        profile: getConsoleFn("profile"),
-	        profileEnd: getConsoleFn("profileEnd"),
-	        count: getConsoleFn("count"),
-	        clear: getConsoleFn("clear"),
-	        time: getConsoleFn("time"),
-	        timeEnd: getConsoleFn("timeEnd"),
-	        timeStamp: getConsoleFn("timeStamp"),
-	        table: getConsoleFn("table"),
-	        error: getConsoleFn("error"),
-	        memory: getConsoleFn("memory"),
-	        markTimeline: getConsoleFn("markTimeline"),
-	        timeline: getConsoleFn("timeline"),
-	        timelineEnd: getConsoleFn("timelineEnd")
-	    };
-	    function getConsoleFn(name) {
-	        return function actionConsole() {
-	            if (typeof (orgConsole) !== "object") return;
-	            if (typeof (orgConsole[name]) !== "function") return;//�ж�ԭʼconsole�������Ƿ��д˷�������û����ֱ�ӷ���
-	            return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));//����ԭʼ����
-	        };
-	    }
-	}(window._console));
-
-
-
-</script>
-
-<script src="{% static 'js/common/index.js-v=2.0.5' %}"   ></script>
+    <link href="{% static 'css/user/register.css' %}" rel="stylesheet">
+<link href="{% static 'css/user/SystemAnnouncement.css' %}" rel="stylesheet">
 
 <!-- 商务要加的-->
 <meta name="baidu-site-verification" content="wA2vFPSsen" />
@@ -1789,20 +1712,11 @@ var live_url="//www.shiguangkey.com/live/";
     </div>
     <div class="mask none closepup"></div>    <!-- 登录弹窗 -->
     <div id="loginDiv" class="none"></div>
-<link href="{% static 'css/user/register.css' %}" rel="stylesheet">
-<!-- <div id="bandPhone" class="none">
-	<div class="pond-phone-bg">
-	</div>
-	<div class="pond-phone">
-		<img src="https://www.shiguangkey.co{% static 'images/pond-phone-pic.png' %}">
-		<div class="pond-phone-text">
-			<button class="pond-phone-btnNO">取消</button>
-			<button class="pond-phone-btnYes"><a href="/studentAdmin/main.html#contact" target="_blank">去绑定手机号码</a></button>
-		</div>
-	</div>
-</div> -->
 
-<link href="{% static 'css/user/SystemAnnouncement.css' %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'js/fi000001.5' %}"   ></script>
+<script type="text/javascript" src="{% static 'js/src/common/track.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/common/layer/layer.js' %}"></script>
+   <link rel="stylesheet" href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
 
 <div class="SystemAnnouncement none" id="message">
 	<div class="btn-x"><img src="{% static 'images/X-w.png' %}"   ></div>
@@ -1813,6 +1727,65 @@ var live_url="//www.shiguangkey.com/live/";
 	<input id="messageId" type="hidden">
 	<button id="checkDetail" data-type="" onclick="onGetMessage()">查看详情</button>
 </div>
+   <script>
+var ossHome="https://res.shiguangkey.com/";
+var token  = $.cookie("token");
+var localhref = location.href;
+var live_url="//www.shiguangkey.com/live/";
+//ga统计
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90486517-17', 'auto');
+  ga('send', 'pageview');
+
+  //IE8 不支持console.log
+  window._console = window.console;
+	window.console = (function (orgConsole) {
+	    return {
+	        log: getConsoleFn("log"),
+	        debug: getConsoleFn("debug"),
+	        info: getConsoleFn("info"),
+	        warn: getConsoleFn("warn"),
+	        exception: getConsoleFn("exception"),
+	        assert: getConsoleFn("assert"),
+	        dir: getConsoleFn("dir"),
+	        dirxml: getConsoleFn("dirxml"),
+	        trace: getConsoleFn("trace"),
+	        group: getConsoleFn("group"),
+	        groupCollapsed: getConsoleFn("groupCollapsed"),
+	        groupEnd: getConsoleFn("groupEnd"),
+	        profile: getConsoleFn("profile"),
+	        profileEnd: getConsoleFn("profileEnd"),
+	        count: getConsoleFn("count"),
+	        clear: getConsoleFn("clear"),
+	        time: getConsoleFn("time"),
+	        timeEnd: getConsoleFn("timeEnd"),
+	        timeStamp: getConsoleFn("timeStamp"),
+	        table: getConsoleFn("table"),
+	        error: getConsoleFn("error"),
+	        memory: getConsoleFn("memory"),
+	        markTimeline: getConsoleFn("markTimeline"),
+	        timeline: getConsoleFn("timeline"),
+	        timelineEnd: getConsoleFn("timelineEnd")
+	    };
+	    function getConsoleFn(name) {
+	        return function actionConsole() {
+	            if (typeof (orgConsole) !== "object") return;
+	            if (typeof (orgConsole[name]) !== "function") return;//�ж�ԭʼconsole�������Ƿ��д˷�������û����ֱ�ӷ���
+	            return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));//����ԭʼ����
+	        };
+	    }
+	}(window._console));
+
+
+
+</script>
+
+<script src="{% static 'js/common/index.js-v=2.0.5' %}"   ></script>
+
 <script type="text/javascript" >
 	$(".btn-x").click(function(){
 	    $(".SystemAnnouncement").hide();
