@@ -157,4 +157,7 @@ EMAIL_HOST_PASSWORD = "xtyxxnyonltqdfgf"
 EMAIL_USE_SSL = True   #第三种配置方式
 EMAIL_FROM = "3003002865@qq.com"
 
+#  配置关于文件上传的设置
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

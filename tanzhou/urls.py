@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.static import serve
+
 from users.views import IndexView, LoginView, LogoutView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, \
     ModifyPwdView
+from tanzhou.settings import MEDIA_ROOT
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -44,4 +48,7 @@ urlpatterns = [
 
     # 关于用户
     url(r'^i/', include('users.urls', namespace='i')),
+
+    #配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*)$',  serve, {"document_root":MEDIA_ROOT}),
 ]

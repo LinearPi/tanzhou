@@ -3,11 +3,12 @@ from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.hashers import make_password
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views import View
 
-from users.forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, ChangePwdForm
+from users.forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, ChangePwdForm, UploadImageForm, \
+    UploadInfoForm
 from users.models import UserInfo, EmailVerify
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
@@ -125,6 +126,7 @@ class ForgetPwdView(View):
             if UserInfo.objects.filter(email=email):
                 send_register_email(email, 'forget')
                 return render(request, 'send_success.html', {'email': email})
+
             return render(request, 'forgetpwd.html', {'msg': u"用户不存在!!",
                                                       'forget_from': forget_from})
         else:
@@ -144,7 +146,7 @@ class ResetView(View):
 
 # 确认修改密码
 class ModifyPwdView(View):
-    def post(self, request, reset_code):
+    def post(self, request):
         modify_form = ModifyPwdForm(request.POST)
         if modify_form.is_valid():
 
@@ -171,6 +173,14 @@ class ModifyPwdView(View):
 class UserInfoView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'my_info.html', {})
+
+    def post(self, request):
+        info_form = UploadInfoForm(request.POST, instance=request.user)
+        if info_form.is_valid():
+            info_form.save()
+            return HttpResponseRedirect(reverse("i:info"))
+        else:
+            return render(request, 'my_info.html', {'info_form': info_form})
 
 
 # 关于用户密码修改
@@ -231,10 +241,28 @@ class UserCourseView(LoginRequiredMixin, View):
         pass
 
 
-# 用户密码修改
-class UserPasswordView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, 'my_paasword.html', {})
+# 用户修改头像
+class UploadImageView(LoginRequiredMixin, View):
 
+    # def post(self, request):
+    #     # 把前段传入的数据保存    直接实例化,实例化直接保存
+    #     image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+    #     print(dir(image_form))
+    #     if image_form.is_valid():
+    #         image_form.save()
+    #         return HttpResponseRedirect(reverse("i:info"))
+    #     else:
+    #         return render(request, 'my_info.html')
+
+    # 常规方式
     def post(self, request):
-        pass
+
+        image_form = UploadImageForm(request.POST, request.FILES)
+        if image_form.is_valid():
+
+            image = image_form.cleaned_data['image']
+            request.user.image = image
+            request.user.save()
+            return HttpResponseRedirect(reverse("i:info"))
+        else:
+            return render(request, 'my_info.html')
