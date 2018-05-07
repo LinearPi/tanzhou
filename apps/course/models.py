@@ -34,10 +34,10 @@ class CourseSort(models.Model):
 class Course(models.Model):
     sort = models.ForeignKey(CourseSort, verbose_name=u"分类")
     name = models.CharField(max_length=30, verbose_name=u"课程名称")
-    price = models.CharField(max_length=10, verbose_name=u"价格")
+    price = models.IntegerField(default=0, verbose_name=u"价格")
     learn_time = models.CharField(max_length=6, verbose_name=u"学习时长")
     nums = models.IntegerField(default=0, verbose_name=u"购买人数")
-    image = models.ImageField(upload_to="img/&Y/%m", verbose_name=u"封面图")
+    image = models.ImageField(upload_to="img/%Y/%m", verbose_name=u"封面图")
     describe = models.ImageField(upload_to="img/course/%Y/%m", verbose_name=u"描述")
     click_num = models.IntegerField(default=0, verbose_name=u"点击人数")
 
@@ -52,7 +52,8 @@ class Course(models.Model):
 class Lesson(models.Model):
     lesson_course = models.ForeignKey(Course, verbose_name=u"课程")
     name = models.CharField(max_length=40, verbose_name=u"课程名")
-    time = models.DateTimeField(default=datetime.now, verbose_name=u"课程时间")
+    start_time = models.DateTimeField(default=datetime.now, verbose_name=u"开始时间")
+    end_time = models.DateTimeField(default=datetime.now, verbose_name=u"结束时间")
 
 
     class Meta:

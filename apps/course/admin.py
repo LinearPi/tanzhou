@@ -24,7 +24,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ["name", "lesson_course", "time"]
+    list_display = ["name", "lesson_course"]
     list_filter = ["name", "lesson_course"]
     search_fields = ["name", "lesson_course"]
 
@@ -40,6 +40,10 @@ admin.site.register(CourseSort, CourseSortAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Teacher, TeacherAdmin)
+
+
+admin.site.site_header = '潭州课堂后台管理'
+admin.site.site_title = '潭州课堂'
 
 # 第二种方法 装饰器的用法
 # @admin.register(Course)

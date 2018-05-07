@@ -1,15 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 {% load staticfiles %}
-<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="https://www.shiguangkey.co{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
+<link href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
 <title>潭州课堂-在线直播教学平台|潭州课堂-互联网在线教育</title>
-<link rel="stylesheet" href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
+<link  href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
 
-    <link href="{% static 'css/user/register.css' %}" rel="stylesheet">
+<link href="{% static 'css/user/register.css' %}" rel="stylesheet">
 <link href="{% static 'css/user/SystemAnnouncement.css' %}" rel="stylesheet">
+<link href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
+
 
 <!-- 商务要加的-->
 <meta name="baidu-site-verification" content="wA2vFPSsen" />
@@ -92,7 +94,7 @@
       	      	<!--主导航 - 开始-->
         		<div class="navigation">
             		<ul>
-            		<li><a href="index.htm"    target="_blank">首页</a></li>
+            		<li><a href="{% url 'index' %}"    target="_blank">首页</a></li>
                     <li><a href="list.htm" target="_blank">全部课程</a></li>
                     <!-- <li><a href="http://bbs.tanzhouedu.com/" target="_blank">社区</a></li> -->
                     <li>
@@ -643,7 +645,7 @@
                                             <a>您的课表今日暂无直播课程</a>
                                         </div>
                                     </div>
-                                    <a href="list.htm" target="_blank"><img src="{% static 'images/defaully.png' %}" alt="全部课程" /></a>
+                                    <a href="{% url 'course:list' %}" target="_blank"><img src="{% static 'images/defaully.png' %}" alt="全部课程" /></a>
                                 </div>
                             </div>
                             <!-- 有课程时展示效果 - 开始-->
@@ -691,109 +693,36 @@
         	<div class="public-ti">公开课推荐</div>
         </div>
     	<div class="courseall w1241">
-            	            <div class="course-item fl">
+
+            {% for course in all_free_courses %}
+                <div class="course-item fl">
 	                <div class="courimg">
-	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="{% static 'img/file/201803/21/20180321175430465488152.jpg!mall_course_c.png' %}"    />
+	                    <a href=""    target="_blank" class="cimg">
+	                        <img src="{{ MEDIA_URL }}{{ course.image }}"    />
 	                    </a>
 	                    <div class="cour-icon">
                     		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
                     	</div>
+
 		                <div class="none" id="1223_public_flase">
 		                	<a href=" "  class="clive"  value="1223">上课中</a>
 		                </div>
+
 	                </div>
 	                <div class="item-line">
 	                       <div class="itemcont">
 		                    	<a href=" "    title="素描零基础入门" target="_blank" class="ictxt">
-		                    		素描零基础入门
+		                    		{{ course.name }}
 		                    	</a>
 		                    </div>
 	                    <span class="green">免费</span>
-	                    <!-- href="/school/" target="_blank" -->
-						<a  class="item-txt fr"><span style="color: #888;">报名人数：</span>4442人</a>
-	                   <!--  <a href="/school/" target="_blank" class="item-txt fr"></a> -->
-	                </div>
-	                <div class="clear"></div>
-	            </div>
-	            <div class="course-item fl">
-	                <div class="courimg">
-	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="{% static 'img/file/201803/05/20180305181902919396908.jpg!mall_course_c.png' %}"    />
-	                    </a>
-	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
-                    	</div>
-		                <div class="none" id="1779_public_flase">
-		                	<a href=" "  class="clive"  value="1779">上课中</a>
-		                </div>
-	                </div>
-	                <div class="item-line">
-	                       <div class="itemcont">
-		                    	<a href=" "    title="人工智能 零基础到项目实战" target="_blank" class="ictxt">
-		                    		人工智能 零基础到项目实战
-		                    	</a>
-		                    </div>
-	                    <span class="green">免费</span>
-	                    <!-- href="/school/" target="_blank" -->
-						<a  class="item-txt fr"><span style="color: #888;">报名人数：</span>1556人</a>
-	                   <!--  <a href="/school/" target="_blank" class="item-txt fr"></a> -->
-	                </div>
-	                <div class="clear"></div>
-	            </div>
-	            <div class="course-item fl">
 
-	                <div class="courimg">
-	                    <a href=""    target="_blank" class="cimg">
-	                        <img src="{% static 'img/file/201803/23/20180323094837582568507.jpg!mall_course_c.png' %}"    />
-	                    </a>
-	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
-                    	</div>
-		                    <a href=" "  class="clive live_status_true"  data-val="1760">上课中</a>
-		                <div class="none" id="1760_public_flase">
-		                	<a href=" "  class="clive"  value="1760">上课中</a>
-		                </div>
-	                </div>
-	                <div class="item-line">
-	                       <div class="itemcont">
-		                    	<a href=" "    title="Javascript基础到项目实战" target="_blank" class="ictxt">
-		                    		Javascript基础到项目实战
-		                    	</a>
-		                    </div>
-	                    <span class="green">免费</span>
-	                    <!-- href="/school/" target="_blank" -->
-						<a  class="item-txt fr"><span style="color: #888;">报名人数：</span>7696人</a>
-	                   <!--  <a href="/school/" target="_blank" class="item-txt fr"></a> -->
+						<a  class="item-txt fr"><span style="color: #888;">报名人数：</span>{{ course.nums }}人</a>
 	                </div>
 	                <div class="clear"></div>
 	            </div>
-	            <div class="course-item fl">
-	                <div class="courimg">
-	                    <a href=" "    target="_blank" class="cimg">
-	                        <img src="{% static 'img/file/201803/21/20180321174710777324821.jpg!mall_course_c.png' %}"    />
-	                    </a>
-	                    <div class="cour-icon">
-                    		<span class="publicimg"><img src="{% static 'images/public.png' %}"   ></span>
-                    	</div>
-		                    <a href=" "  class="clive live_status_true"  data-val="1080">上课中</a>
-		                <div class="none" id="1080_public_flase">
-		                	<a href=" "  class="clive"  value="1080">上课中</a>
-		                </div>
-	                </div>
-	                <div class="item-line">
-	                       <div class="itemcont">
-		                    	<a href=" "    title="大数据人工智能 课程讲座" target="_blank" class="ictxt">
-		                    		大数据人工智能 课程讲座
-		                    	</a>
-		                    </div>
-	                    <span class="green">免费</span>
-	                    <!-- href="/school/" target="_blank" -->
-						<a  class="item-txt fr"><span style="color: #888;">报名人数：</span>12712人</a>
-	                   <!--  <a href="/school/" target="_blank" class="item-txt fr"></a> -->
-	                </div>
-	                <div class="clear"></div>
-	            </div>
+            {% endfor %}
+
 	            <div class="course-item fl">
 	                <div class="courimg">
 	                    <a href=" "    target="_blank" class="cimg">
@@ -904,10 +833,11 @@
 	        	<div class="public-ti">IT互联网</div>
 	        </div>
 	    	<div class="courseall w1241">
+                {% for itcourse in it_courses %}
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
-		                        <img src="{% static 'img/file/201803/24/20180324173211470534131.jpg!mall_course_c.png' %}"    />
+		                        <img src="{{ MEDIA_URL }}{{ itcourse.image }}"    />
 		                    </a>
 		                    <div class="cour-icon">
                     			<span class="vipimg"><img src="{% static 'images/vip.png' %}"   ></span>
@@ -919,17 +849,18 @@
 		                <div class="item-line">
 		                	<div class="itemcont">
 		                    	<a href=" "    title="自媒体基础班" target="_blank" class="ictxt">
-		                    		自媒体基础班
+		                    		{{ itcourse.name }}
 		                    	</a>
 		                    </div>
 	                    		<span class="coloryell">
-	                    			3980元
+	                    			{{ itcourse.price }}元
 	                    		</span>
-                    		<!-- href="/school/" target="_blank" -->
-		                    <a  class="item-txt fr"><span style="color: #888;">报名人数：</span>3109人</a>
+
+		                    <a  class="item-txt fr"><span style="color: #888;">报名人数：</span>{{ itcourse.nums }}人</a>
 		                </div>
 		                <div class="clear"></div>
 	                 </div>
+                {% endfor %}
 		            <div class="course-item h240 fl">
 		                <div class="courimg">
 		                    <a href=" "    target="_blank" class="cimg">
@@ -1636,11 +1567,11 @@
             	<p>Copyright © 2017 All Rights Reserved </p>
             	<p class="icptxt">版权所有：湖南时光钥匙网络有限公司      备案号：湘ICP备17002945号-1</p>
             	<div style="width:300px;margin:10px 0 0 168px;">
-		 			<a target="_blank" href=" "    style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{% static 'images/beiantubiao.png' %}" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43019002000435号</p></a>
+		 			<a target="_blank" href=" "style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{% static 'images/beiantubiao.png' %}" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43019002000435号</p></a>
 		 		</div>
             </div>
             <div class="tb-foot fl">
-	            <a  key ="59015a73efbfb03b5229e25c"  logo_size="124x47"  logo_type="common"  href=" "    >
+	            <a  key ="59015a73efbfb03b5229e25c"  logo_size="124x47"  logo_type="common"  href=" ">
 	            <script src="{% static 'js/aq_auth.js' %}"   ></script>
 	            </a>
             </div>
@@ -1716,7 +1647,6 @@
 <script type="text/javascript" src="{% static 'js/fi000001.5' %}"   ></script>
 <script type="text/javascript" src="{% static 'js/src/common/track.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/common/layer/layer.js' %}"></script>
-   <link rel="stylesheet" href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
 
 <div class="SystemAnnouncement none" id="message">
 	<div class="btn-x"><img src="{% static 'images/X-w.png' %}"   ></div>
@@ -1774,8 +1704,8 @@ var live_url="//www.shiguangkey.com/live/";
 	    function getConsoleFn(name) {
 	        return function actionConsole() {
 	            if (typeof (orgConsole) !== "object") return;
-	            if (typeof (orgConsole[name]) !== "function") return;//�ж�ԭʼconsole�������Ƿ��д˷�������û����ֱ�ӷ���
-	            return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));//����ԭʼ����
+	            if (typeof (orgConsole[name]) !== "function") return;
+	            return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));
 	        };
 	    }
 	}(window._console));
@@ -1784,7 +1714,7 @@ var live_url="//www.shiguangkey.com/live/";
 
 </script>
 
-<script src="{% static 'js/common/index.js-v=2.0.5' %}"   ></script>
+<script src="{% static 'js/common/index.js-v=2.0.5' %}"></script>
 
 <script type="text/javascript" >
 	$(".btn-x").click(function(){

@@ -10,6 +10,7 @@ from django.views import View
 from users.forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, ChangePwdForm, UploadImageForm, \
     UploadInfoForm
 from users.models import UserInfo, EmailVerify
+from course.models import Course
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
 
@@ -29,7 +30,10 @@ class CustomBackend(ModelBackend):
 # 首页
 class IndexView(View):
     def get(self, request):
-        return render(request, 'index.htm', {})
+        all_free_courses = Course.objects.filter(price=0)
+        it_courses = Course.objects.filter(price__gt=0,sort_id=1)[:1]
+        return render(request, 'index.htm', {"all_free_courses": all_free_courses,
+                                             "it_courses": it_courses})
 
 
 # 登录页面
@@ -244,25 +248,24 @@ class UserCourseView(LoginRequiredMixin, View):
 # 用户修改头像
 class UploadImageView(LoginRequiredMixin, View):
 
-    # def post(self, request):
-    #     # 把前段传入的数据保存    直接实例化,实例化直接保存
-    #     image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
-    #     print(dir(image_form))
-    #     if image_form.is_valid():
-    #         image_form.save()
-    #         return HttpResponseRedirect(reverse("i:info"))
-    #     else:
-    #         return render(request, 'my_info.html')
-
-    # 常规方式
     def post(self, request):
-
-        image_form = UploadImageForm(request.POST, request.FILES)
+        # 把前段传入的数据保存    直接实例化,实例化直接保存
+        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
-
-            image = image_form.cleaned_data['image']
-            request.user.image = image
-            request.user.save()
+            image_form.save()
             return HttpResponseRedirect(reverse("i:info"))
         else:
             return render(request, 'my_info.html')
+
+    # 常规方式
+    # def post(self, request):
+    #
+    #     image_form = UploadImageForm(request.POST, request.FILES)
+    #     if image_form.is_valid():
+    #
+    #         image = image_form.cleaned_data['image']
+    #         request.user.image = image
+    #         request.user.save()
+    #         return HttpResponseRedirect(reverse("i:info"))
+    #     else:
+    #         return render(request, 'my_info.html')

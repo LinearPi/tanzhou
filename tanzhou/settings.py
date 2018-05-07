@@ -48,8 +48,11 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'course',
     'bootstrap4',
-    'captcha'
+    'captcha',
+    'pure_pagination',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -144,7 +147,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 3,
+    'MARGIN_PAGES_DISPLAYED': 1,
 
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
 
 # QQ 邮箱发送
 EMAIL_HOST = "smtp.qq.com"
