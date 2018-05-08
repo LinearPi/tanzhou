@@ -18,7 +18,7 @@ class CourseSortAdmin(admin.ModelAdmin):
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ["name", "price", "learn_time", "nums"]
+    list_display = ["name", "price", "learn_time", "nums",]
     list_filter = ["name", "price", "learn_time", "nums"]
     search_fields = ["name", "price", "learn_time", "nums"]
 

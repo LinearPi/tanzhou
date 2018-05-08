@@ -31,7 +31,7 @@ class CustomBackend(ModelBackend):
 class IndexView(View):
     def get(self, request):
         all_free_courses = Course.objects.filter(price=0)
-        it_courses = Course.objects.filter(price__gt=0,sort_id=1)[:1]
+        it_courses = Course.objects.filter(price__gt=0, sort_id=1)[:1]
         return render(request, 'index.htm', {"all_free_courses": all_free_courses,
                                              "it_courses": it_courses})
 
@@ -176,7 +176,8 @@ class ModifyPwdView(View):
 # 关于用户的信息
 class UserInfoView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'my_info.html', {})
+        page_name = 'info'
+        return render(request, 'my_info.html', {"page_name": page_name})
 
     def post(self, request):
         info_form = UploadInfoForm(request.POST, instance=request.user)
@@ -221,7 +222,8 @@ class ChangePwdView(LoginRequiredMixin, View):
 # 用户订单
 class UserOrderView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'my_order.html', {})
+        page_name = "order"
+        return render(request, 'my_order.html', {"page_name": page_name})
 
     def post(self, request):
         pass
@@ -230,7 +232,8 @@ class UserOrderView(LoginRequiredMixin, View):
 # 用户作业
 class UserWorkView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'my_homework.html', {})
+        page_name = "homework"
+        return render(request, 'my_homework.html', {"page_name": page_name})
 
     def post(self, request):
         pass
@@ -239,7 +242,8 @@ class UserWorkView(LoginRequiredMixin, View):
 # 用户课程
 class UserCourseView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'my_course.html', {})
+        page_name = "course"
+        return render(request, 'my_course.html', {"page_name": page_name})
 
     def post(self, request):
         pass

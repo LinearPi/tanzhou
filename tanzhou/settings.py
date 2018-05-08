@@ -78,7 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'  # 这个是用来配置media的路径
+                 'django.template.context_processors.media',  # 这个是用来配置media的路径
             ],
         },
     },
@@ -150,7 +150,6 @@ STATICFILES_DIRS = [
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 3,
     'MARGIN_PAGES_DISPLAYED': 1,
-
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
 

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
-    <title>潭州课堂</title>
+    {% block title %}<title>潭州课堂</title>{% endblock %}
 
     <script type="text/javascript" src="{% static 'css/user/index.css' %}"></script>
     <link href="{% static 'css/user/index.css' %}" rel="stylesheet">
@@ -34,14 +34,19 @@
         </div>
         <div class="main">
 
-            <div class="_3e23-">
-                <ul>
-                    <li class=""><a href="https://www.shiguangkey.com/i/course">我的课程表</a></li>
-                    <li class=""><a href="https://www.shiguangkey.com/i/order">我的订单</a></li>
-                    <li class=""><a href="https://www.shiguangkey.com/i/homework">我的作业</a></li>
-                    <li class="hWd71"><a href="{% url 'i:info' %}">个人资料</a></li>
-                </ul>
-            </div>
+    <div class="_3e23-">
+        <ul>
+            <li class="{% ifequal page_name 'course' %}hWd71{% endifequal %}"><a href="{% url 'i:course' %}">我的课程表</a>
+            </li>
+            <li class="{% ifequal page_name 'order' %}hWd71{% endifequal %}"><a href="{% url 'i:order' %}">我的订单</a></li>
+            <li class="{% ifequal page_name 'homework' %}hWd71{% endifequal %}"><a href="{% url 'i:homework' %}">我的作业</a>
+            </li>
+            <li class="{% ifequal page_name 'info' %}hWd71{% endifequal %}"><a href="{% url 'i:info' %}">个人资料</a></li>
+        </ul>
+    </div>
+
+
+
 
             {% block content %}
 

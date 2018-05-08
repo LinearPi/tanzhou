@@ -1,0 +1,219 @@
+{% extends 'course_base.html' %}
+{% load staticfiles %}
+
+{% block title %}<title>潭州课堂 - 目录详情</title>{% endblock %}
+
+{% block course_filter %}{% endblock %}
+
+
+{% block courseclass %}{% endblock %}
+
+{% block coursesort %}{% endblock %}
+
+{% block courselist %}
+
+{% for cou in course %}
+        <div class="w1195">
+        <!--面包屑 - 开始-->
+        <div class="breadcrumbs">
+            <a href="{% url 'index' %}">首页</a>
+            <i>></i>
+            <a href="">{{ cou.sort.classes.get_name_display }}</a>
+            <i>></i>
+            <a href="">{{ cou.sort.name }}</a>
+            <i>></i>
+            <span>{{ cou.name }}</span>
+        </div>
+        <input type="hidden" id="courseId" value="1111"/>
+        <input type="hidden" id="courseType" value="5310"/>
+
+        <div class="cour-infor">
+            <div class="c-banner fl">
+                <img src="{{ MEDIA_URL }}{{ cou.image }}">
+            </div>
+            <div class="fr cour-right">
+                <div class="crtitle">
+                    <a>{{ cou.name }}</a>
+                </div>
+                <!--购买-->
+                <div class="cont ">
+                    <!--VIP - 价格 购买人数 时间 - 开始-->
+                    <div class="cpr">
+                        {% ifequal cou.price 0 %}
+                            <div class="free">免费</div>
+                        {% else %}
+                            <span>价格：</span>
+                            <font class="cfont">{{ cou.price }}元</font>
+                        {% endifequal %}
+
+
+                    </div>
+                    <input type="hidden" name="coupon-count" id="coupon-count" value="0">
+                    <!--优惠劵 - 开始-->
+                    <div class="cour-time ctime-bg">
+                        <input type="hidden" id="isBuy" value="">
+                        <span>购买人数：{{ cou.nums }}</span><br/>
+                        <span>学习时长：{{ cou.learn_time }}天</span>
+                        <!---->
+                    </div>
+                    <!--vip-已购买展示效果 - 开始-->
+                    <span id="applyImg" class="cour-buy none"><img src="{% static 'images/c-buy.png' %}"></span>
+                    <!--收藏 分享 - 开始-->
+                    <div class="collec-share">
+                        <!--分享-->
+                        <!--分享-->
+                        <div class="share fl">
+                            <a href=""><i class="icon share-icon"></i>分享</a>
+                            <div class="share-hover">
+                                <i class="icon ssan"></i>
+                                <div class="share-txt">
+                                    <div class="shareDom">
+                                        <ul class="-mob-share-open">
+                                            <li><a href="" title="分享到QQ"
+                                                   class="-mob-share-qq share-qq"><img
+                                                    src="{% static 'images/share-qq.png' %}"></a>
+                                            </li>
+                                            <li><a href="" title="分享到微信"
+                                                   class="-mob-share-weixin share-wx"><img
+                                                    src="{% static 'images/share-wx.png' %}"></a>
+                                            </li>
+                                            <li><a href="" title="分享到空间"
+                                                   class="-mob-share-qzone share-qzone"><img
+                                                    src="{% static 'images/share-qzone.png' %}"></a></li>
+                                            <li><a href="" title="分享到微博"
+                                                   class="-mob-share-weibo share-wb"><img
+                                                    src="{% static 'images/share-wb.png' %}"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <!--按钮 - 开始-->
+                    <div class="cour-but">
+                        <div class="notbuy courbut-all">
+                            <!--VIP按钮-  开始-->
+                            <div class="fl">
+                                <!-- -1下架 1未购买 2没权限 3未分班 4已结束 5招生中 6未登录-->
+                                <!--立即购买-->
+                                <a href="" data-type="6810" data-bid="1111" data-course="1111"
+                                   id="vipApplyButton" class="notb-immedi notbg-red buy-btn">立即购买</a>
+                            </div>
+                            <!--在线咨询 - 开始-->
+                            <!-- <div class="live-but">
+                                <a href="" class="">在线咨询</a>
+                                <div class="live-phone">
+                                    <a href="http://wpa.qq.com/msgrd?v=3&uin=909836937&site=qq&m" target="_blank">QQ</a>
+                                    <a href="" onclick="starPhone()" class="borno">电话</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!--手机观看 - 开始-->
+                    <div class="phone-watch">
+                        <a href="" class="watch-title"><i class="phimg"><img
+                                src="{% static 'images/pw-img.jpg' %}"></i>手机观看<i class="icon phicon"></i></a>
+                        <div class="phont-hover">
+                            <a href="" class="watch-title"><i class="phimg"><img
+                                    src="{% static 'images/pw-img.jpg' %}"></i>手机观看<i class="icon phicon-x"></i></a>
+                            <div class="pwer">
+                                <div id="erweiMa"></div>
+                                <input type="hidden" value="1111" class="erweiMa_courseId"/>
+                                <p class="pwtxt">扫码打开APP观看</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+
+        <!--课程介绍 课程目录 - 开始-->
+        <div class="main w1195">
+        <!--左边内容 - 开始-->
+        <div class="fl mleft">
+        <div class="mleft-title">
+            <a href="/course/details/{{ cou.id }}">课程介绍</a>
+            <a href="/course/lesson/{{ cou.id }}" class="borbot">课程目录</a>
+        </div>
+    {% endfor %}
+
+<!--课程目录-->
+<div class="mleft-txt ">
+
+    <div class="class-list-header">
+
+        <div class="fl class-list-info">
+            当前班期开课时间：<span class="class-time">2017/11/02至2018/04/03</span>
+            <span class="class-teacher">主讲老师：潮涌老师_107期主讲老师</span>
+        </div>
+
+        <div class="fl class-list-select">
+            <a href="">第<span class="class-period">1</span>期 <span class="class-time">2017/11/02至2018/04/03</span></a>
+            <ul class="class-list-data">
+                <li class="class-list-item" data-class="751" data-period="1">第1期 <span
+                        class="class-select-time">2017/11/02至2018/04/03</span></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <ul class="class-chapter-list">
+
+
+    {% for lesson in lessons %}
+         <li>
+            <p class="cour-catalog">{{ lesson.name }}</p>
+            <span class="ended fr">{{ lesson.start_time }}--{{ lesson.end_time }}</span>
+        </li>
+    {% endfor %}
+
+        <li>
+            <p class="cour-catalog">本期结业总结和优秀学员奖励</p>
+            <span class="ended fr">直播已结束</span>
+
+            <div class="ended-div" name="videoDiv">
+                <div class="cour-catalogDiv"><i><img src="{% static 'images/biankuang.png' %}"></i>
+                    <a href=""
+                       class="catalog-click" target="_blank"><b class="catalive-img"></b><span>105期毕业典礼及107期开学典礼</span></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</div>
+</div>            <!--右边内容 - 开始-->
+
+
+<div class="fr mright">
+    <div class="start-school bgfff mtop20">
+        <div class="mleft-title mrti">开课老师</div>
+        <div class="school-txt">
+            <div class="teacher-intro">
+                        <span class="teachimg"><img
+                                src="{{ MEDIA_URL }}{{ teacher.teacher_img }}"/></span>
+                <div class="fr teach-text">
+                    <p class="teach-title">{{ teacher.teacher_name }}</p>
+                    <p class="teachtxt">
+                        {{ teacher.teacher_des }}
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
+
+{% block host_course %} {% endblock %}
+
+

@@ -1,49 +1,18 @@
-<!DOCTYPE html>
+{% extends 'my_base.html' %}
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
-    <title>潭州课堂</title>
-    <script src="{% static 'js/media.match.min.js' %}"></script>
 
-    <link href="{% static 'css/user/index.css' %}" rel="stylesheet">
-    <script type="text/javascript" charset="utf-8" async=""
-            src="{% static 'js/user/6.35b33d655a7eafd5dd31.js' %}"></script>
-    <script type="text/javascript" charset="utf-8" async=""
-            src="{% static 'js/user/1.d3a8b0247c920eab6a62.js' %}"></script>
-</head>
-<body>
-<div id="root">
-    <div data-reactroot="" id="reactRoot">
-        <div class="_13dEg">
-            <div class="PDZyl">
-                <div class="_3it4G"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}"></a></div>
-                <div class="_3phvK"><a href="https://www.shiguangkey.com/">首页</a><a
-                        href="https://www.shiguangkey.com/course/list">全部课程</a><a
-                        href="https://www.shiguangkey.com/help/downloadApp">客户端</a></div>
-                <div class="_9URcm"><input type="text" placeholder="搜索课程关键词"><a href="javascript:;">搜索</a></div>
-                <div class="YrVqW"><img title="" src="{% static 'images/default.png' %}" alt=""><span></span>
-                    <ul>
-                        <li><a href="{% url 'logout' %}">退出登录</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="main">
-            <div class="_3e23-">
-                <ul>
-                    <li class=""><a href="https://www.shiguangkey.com/i/course">我的课程表</a></li>
-                    <li class=""><a href="https://www.shiguangkey.com/i/order">我的订单</a></li>
-                    <li class=""><a href="https://www.shiguangkey.com/i/homework">我的作业</a></li>
-                    <li class="hWd71"><a href="{% url 'i:info' %}">个人资料</a></li>
-                </ul>
-            </div>
-            <div class="content"><h1 class="contentTitle">个人资料</h1>
+{% block custom_css %}
+
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="content"><h1 class="contentTitle">个人资料</h1>
                 <div class="contentBody">
                     <div class="B6J2b">
                         <div class="TZ-Tab TZ-Tab-top">
+
                             <div role="tablist" class="TZ-Tab-bar" tabindex="0">
                                 <div class="TZ-Tab-nav-container">
 
@@ -71,6 +40,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="TZ-Tab-content TZ-Tab-content-animated"
                                  style="transform: translateX(0%) translateZ(0px);">
                                 <div role="tabpanel" aria-hidden="false" class="TZ-Tab-tabpane TZ-Tab-tabpane-active">
@@ -133,41 +103,15 @@
                                 <div role="tabpanel" aria-hidden="true"
                                      class="TZ-Tab-tabpane TZ-Tab-tabpane-inactive"></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="_114Y9">
-            <div class="_2d7k0">
-                <div class="_1xtci">
-                    <div class="_2Zlgq"><a href="https://www.shiguangkey.com/help/student">帮助中心</a>
-                        <p>Copyright © 2017 All Rights Reserved 版权所有：湖南潭州教育网络科技有限公司 备案号：湘ICP备17002945号-1</p></div>
-                </div>
-                <div class="_1xUyh"><img
+{% endblock %}
 
-                        alt=""></div>
-                <div class="_2WFse">
-                    <div class="_28zgr"><a href="javascript:;"><img width="65" height="65"
-                                                                    src="{% static 'images/weixin.jpg' %}" alt="">
-                        <div>官方微信</div>
-                    </a><a href="javascript:;"><img width="65" height="65" src="{% static 'images/weibo.png' %}" alt="">
-                        <div>官方微博</div>
-                    </a></div>
-                    <div class="bASJk"><h1><img
-
-                            alt=""><!-- react-text: 50 -->联系我们<!-- /react-text --></h1>
-                        <h2><img
-
-                                s
-                                alt=""></h2></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="{% static 'css/user/index.css' %}"></script>
-</body>
-</html>
-
+{% block custom_js %}
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}" type="text/javascript"></script>
+{% endblock %}
 

@@ -1,0 +1,92 @@
+{% extends 'my_base.html' %}
+{% load staticfiles %}
+{% block title %}<title>潭州课堂 - 个人中心</title>{% endblock %}
+
+{% block custom_css %}
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="content"><h1 class="contentTitle">我的作业</h1>
+                <div class="contentBody">
+                    <div class="i73oz"><input type="text" class="_1QdU3" placeholder="输入要查询的作业名称"><a href="javascript:;"
+                                                                                                     class="_2u3d0">查询</a><a
+                            href="javascript:;" class="_1z3qa">重置</a></div>
+                    <div class="_3iUAz">
+                        <div class="TZ-Tab TZ-Tab-top">
+                            <div role="tablist" class="TZ-Tab-bar" tabindex="0">
+                                <div class="TZ-Tab-nav-container"><span unselectable="unselectable"
+                                                                        class="TZ-Tab-tab-prev TZ-Tab-tab-btn-disabled"><span
+                                        class="TZ-Tab-tab-prev-icon"></span></span><span unselectable="unselectable"
+                                                                                         class="TZ-Tab-tab-next TZ-Tab-tab-btn-disabled"><span
+                                        class="TZ-Tab-tab-next-icon"></span></span>
+                                    <div class="TZ-Tab-nav-wrap">
+                                        <div class="TZ-Tab-nav-scroll">
+                                            <div class="TZ-Tab-nav TZ-Tab-nav-animated">
+                                                <div class="TZ-Tab-ink-bar TZ-Tab-ink-bar-animated"
+                                                     style="display: block; transform: translate3d(0px, 0px, 0px); width: 82px;"></div>
+                                                <div role="tab" aria-disabled="false" aria-selected="true"
+                                                     class="TZ-Tab-tab-active TZ-Tab-tab">待完成
+                                                </div>
+                                                <div role="tab" aria-disabled="false" aria-selected="false"
+                                                     class=" TZ-Tab-tab">已完成
+                                                </div>
+                                                <div role="tab" aria-disabled="false" aria-selected="false"
+                                                     class=" TZ-Tab-tab">全部
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="TZ-Tab-content TZ-Tab-content-animated"
+                                 style="transform: translateX(0%) translateZ(0px);">
+                                <div role="tabpanel" aria-hidden="false" class="TZ-Tab-tabpane TZ-Tab-tabpane-active">
+                                    <div>
+                                        <div class="_1Ac_A">
+                                            <div class="TE0cD">
+                                                <div class="_2Ng_r"><img src="{% static 'img/file/201804/07/NoNo.32f2bd65.jpg' %}"
+                                                                         alt="暂时没有作业记录哦">
+                                                    <h2>暂时没有作业记录哦</h2></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" aria-hidden="true" class="TZ-Tab-tabpane TZ-Tab-tabpane-inactive">
+                                    <div>
+                                        <div class="_1Ac_A">
+                                            <div class="TE0cD">
+                                                <div class="_2Ng_r"><img src="{% static 'img/file/201804/07/NoNo.32f2bd65.jpg' %}"
+                                                                         alt="暂时没有作业记录哦">
+                                                    <h2>暂时没有作业记录哦</h2></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" aria-hidden="true" class="TZ-Tab-tabpane TZ-Tab-tabpane-inactive">
+                                    <div>
+                                        <div class="_1Ac_A">
+                                            <div class="TE0cD">
+                                                <div class="_2Ng_r"><img src="{% static 'img/file/201804/07/NoNo.32f2bd65.jpg' %}"
+                                                                         alt="暂时没有作业记录哦">
+                                                    <h2>暂时没有作业记录哦</h2></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+
+{% block custom_js %}
+    <script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+

@@ -161,64 +161,14 @@
 <div class="w1195">
     <!--一级导航全部课程 - 开始-->
     {% block courseclass %}
-        <div class="allmod onenav">
-            <span>全部课程：</span>
-            <a href=" " class="comran cateLink" data-id="0">全部</a>
-            <a href=" " data-id="258" class="cateLink">IT互联网</a>
-            <a href=" " data-id="259" class="cateLink">语言留学</a>
-            <a href=" " data-id="261" class="cateLink">创意设计</a>
-            <a href=" " data-id="260" class="cateLink">兴趣生活</a>
-            <a href=" " data-id="264" class="cateLink">生产种植</a>
-            <a href=" " data-id="263" class="cateLink">升学考研</a>
-            <a href=" " data-id="262" class="cateLink">公培考证</a>
-        </div>
+
     {% endblock %}
 
     <!--搜索一级二级导航全部课程 - 开始-->
     <div class="fl w890">
         <!--全部课程二级导航 - 开始-->
         {% block coursesort %}
-            <div class="allranking bgfff allnaviga">
-                <a href=" " class="comran cateLink" data-id="">全部</a>
-                <a href=" " class="cateLink">编程语言</a>
-                <a href=" " data-id="265" class="cateLink">互联网产品</a>
-                <a href=" " data-id="266" class="cateLink">互联网营销</a>
-                <a href=" " data-id="300" class="cateLink">农业种植</a>
-                <a href=" " data-id="298" class="cateLink">考研</a>
-                <a href=" " data-id="296" class="cateLink">办公效率</a>
-                <a href=" " data-id="294" class="cateLink">视觉设计</a>
-                <a href=" " data-id="288" class="cateLink">英语</a>
-                <a href=" " data-id="268" class="cateLink">前端开发</a>
-                <a href=" " data-id="468" class="cateLink">出国留学</a>
-                <a href=" " data-id="431" class="cateLink">职场人生</a>
-                <a href=" " data-id="561" class="cateLink">大学</a>
-                <a href=" " data-id="352" class="cateLink">日语</a>
-                <a href=" " data-id="406" class="cateLink">居家生活</a>
-                <a href=" " data-id="564" class="cateLink">高中</a>
-                <a href=" " data-id="355" class="cateLink">韩语</a>
-                <a href=" " data-id="414" class="cateLink">运动健康</a>
-                <a href=" " data-id="505" class="cateLink">设计软件</a>
-                <a href=" " data-id="439" class="cateLink">公务员</a>
-                <a href=" " data-id="422" class="cateLink">文艺修养</a>
-                <a href=" " data-id="533" class="cateLink">游戏美术设计</a>
-                <a href=" " data-id="445" class="cateLink">事业单位</a>
-                <a href=" " data-id="568" class="cateLink">初中</a>
-                <a href=" " data-id="358" class="cateLink">小语种</a>
-                <a href=" " data-id="539" class="cateLink">动漫游戏</a>
-                <a href=" " data-id="572" class="cateLink">小学</a>
-                <a href=" " data-id="544" class="cateLink">摄影影视</a>
-                <a href=" " data-id="548" class="cateLink">环境艺术</a>
-                <a href=" " data-id="374" class="cateLink">移动开发</a>
-                <a href=" " data-id="552" class="cateLink">工业设计</a>
-                <a href=" " data-id="379" class="cateLink">测试运维</a>
-                <a href=" " data-id="384" class="cateLink">游戏开发</a>
-                <a href=" " data-id="389" class="cateLink">软件研发</a>
-                <a href=" " data-id="393" class="cateLink">数据处理</a>
-                <a href=" " data-id="398" class="cateLink">硬件开发</a>
-                <a href=" " data-id="599" class="cateLink">后端开发</a>
-                <a href=" " data-id="675" class="cateLink">人工智能</a>
-                <div class="clear"></div>
-            </div>
+
         {% endblock %}
 
         <!--综合排名 - 开始-->
@@ -351,7 +301,7 @@
 	<div class="pond-phone-bg">
 	</div>
 	<div class="pond-phone">
-		<img src="https://www.shiguangkey.co{% static 'images/pond-phone-pic.png' %}">
+		<img src="{% static 'images/pond-phone-pic.png' %}">
 		<div class="pond-phone-text">
 			<button class="pond-phone-btnNO">取消</button>
 			<button class="pond-phone-btnYes"><a href="/studentAdmin/main.html#contact" target="_blank">去绑定手机号码</a></button>

@@ -1,9 +1,11 @@
 {% extends 'my_base.html' %}
 {% load staticfiles %}
+{% block title %}<title>潭州课堂 - 个人中心</title>{% endblock %}
 
 {% block custom_css %}
 
 {% endblock %}
+
 
 
 {% block content %}
@@ -33,6 +35,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="TZ-Tab-content TZ-Tab-content-animated"
                          style="transform: translateX(0%) translateZ(0px);">
                         <div role="tabpanel" aria-hidden="false" class="TZ-Tab-tabpane TZ-Tab-tabpane-active">
@@ -86,11 +89,13 @@
 
                                             <td>性别：</td>
                                             <td><label class="_10Fbo"><input type="radio" value="male" name="gender"
-                                                    {% if request.user.gender == 'male' %}  checked="checked" {% endif %}>
+                                                    {% if request.user.gender == 'male' %}
+                                                                             checked="checked" {% endif %}>
                                                 男</label>
                                                 <label
                                                         class="_10Fbo"><input type="radio" value="female" name="gender"
-                                                        {% if request.user.gender == 'female' %} checked="checked" {% endif %}>
+                                                        {% if request.user.gender == 'female' %}
+                                                                              checked="checked" {% endif %}>
                                                     女</label></td>
                                         </tr>
                                         <tr>
@@ -144,6 +149,7 @@
                         <div role="tabpanel" aria-hidden="true"
                              class="TZ-Tab-tabpane TZ-Tab-tabpane-inactive"></div>
                     </div>
+
                 </div>
             </div>
         </div>
