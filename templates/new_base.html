@@ -1,0 +1,405 @@
+<html>
+{% load staticfiles %}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
+
+{% block title %} <title>潭州课堂</title> {% endblock %}
+
+<link  href="{% static 'images/favicon.ico-v=2.0.5.png' %}" rel="shortcut icon" type="image/x-icon">
+<link  href="{% static '--css-common-public.css,css-common-common.css,js-common-layer-skin-layer.css,js-three-paging-src-paging.css,css-user-login.css-v=2.0.5.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="pagbg">
+	<!--header 开始-->
+
+<div class="header-bg">
+    <div class="w1195">
+       <h1 class="courlogo fl">
+       	<a href="index.htm" target="_blank"><img src="{% static 'images/pag-logo-1.png' %}" alt="潭州课堂电商logo" /></a>
+       </h1>
+       <div class="fl cour-nav">
+       	<ul>
+       		<li><a href="index.htm" target="_blank">首页</a></li>
+            <li><a href="list.htm"   target="_blank">全部课程</a></li>
+            <li>
+               	<a href="../help/downloadApp" target="_blank">客户端</a>
+            </li>
+        </ul>
+       </div>
+       <div class="search fl w290">
+           <div class="seainput w252">
+           	 <i class="icon searchimg fr cour-search"   onclick="searchCourse();"></i>
+              <input type="text" placeholder="搜索课程" maxlength="15" id="searchKey"  class="inputtext w203" value="" />
+           </div>
+       </div>
+       <!--登录 - 开始-->
+       <div class="login fr courlogin">
+           <!--未登录展示效果 - 开始-->
+           <div class="logged none" id="login">
+           	   <!-- <a href= " " target="_blank"  class="fr bidding" onclick="onJoinSchool()"> -->
+           	  <!--  <a href="/entering" target="_blank"  class="fr bidding">
+                   <i class="icon school"></i>申办学校 >
+               </a> -->
+               <div class="clobut fr">
+                   <a href= " " onclick="tologin()" style="margin-right:25px;">登录</a>|
+                   <a href= " " onclick="toRegister()">注册</a>
+               </div>
+           </div>
+
+
+           <!--已登录展示效果 - 开始-->
+           <div class="thelogin none" id="thelogin">
+       	       <div class="personal fr">
+                   <a href="../i/index.htm" target="_blank" class="perimg"><img id="imgId" src="{% static 'images/default.png' %}"  ></a>
+                   <div class="peohover">
+                       <i class="icon pericon"></i>
+                       <ul class="perul">
+                           <li><a href="../i/course.htm" target="_blank">课表</a></li>
+                           <li><a href="../i/order.htm" target="_blank">我的订单</a></li>
+                           <li><a href="../i/profile.htm" target="_blank">个人信息</a></li>
+                           <li><a href= " " class="pertopbor" id="logout">退出</a></li>
+                       </ul>
+                   </div>
+               </div>
+               <div class="loginbut fr">
+                   <div class="fr teacher none" id="isTeacher">
+                       <a href="../teacherAdmin/main.html#liveClass" style="color:#fff" target="_bank">教务管理</a>
+                   </div>
+               </div>
+               <!-- <a href= " " target="_blank"  class="fr bidding " onclick="onJoinSchool()"> -->
+              <!--  <a href="/entering" target="_blank" id="entering" class="fr bidding none" >
+                   <i class="icon school"></i>申办学校 >
+               </a> -->
+           </div>
+           </div>
+
+       </div>
+    <div class="clear"></div>
+</div>
+
+	<!--conter - 开始-->
+
+    <div class="w1195">
+    	<!--一级导航全部课程 - 开始-->
+
+
+        {% block class %}
+            <div class="allmod onenav">
+            	<span>全部课程：</span>
+                 <a href= " " class="comran cateLink" data-id="0">全部</a>
+                  <a href= " " data-id="258" class="cateLink">IT互联网</a>
+                  <a href= " " data-id="259" class="cateLink">语言留学</a>
+                  <a href= " " data-id="261" class="cateLink">创意设计</a>
+                  <a href= " " data-id="260" class="cateLink">兴趣生活</a>
+                  <a href= " " data-id="264" class="cateLink">生产种植</a>
+                  <a href= " " data-id="263" class="cateLink">升学考研</a>
+                  <a href= " " data-id="262" class="cateLink">公培考证</a>
+            </div>
+        {% endblock %}
+    	<!--搜索一级二级导航全部课程 - 开始-->
+        <div class="fl w890">
+        	<!--全部课程二级导航 - 开始-->
+
+        {% block sort %}
+
+        {% endblock %}
+
+        	<!--综合排名 - 开始-->
+        {% block filter %}
+            <div class="allranking bgfff">
+           	<div class="fl w495">
+                    <a href= " " class="comran">综合排序</a>
+                    <a href= " " id="isLive"><span class="rankchec "></span>正在上课</a>
+                    <a href= " " id="free"><span class="rankchec  "></span>免费公开课</a>
+                    <a href= " " id="vip"><span class="rankchec  "></span>VIP课程</a>
+                    <div class="fr total">
+                    	<select class="total-text" id="sort" onchange="load()">
+							<option  selected="selected"  value="-1">按价格排序</option>
+							<option  value="desc">总价从高到低</option>
+							<option  value="asc">总价从低到高</option>
+						</select>
+                    </div>
+                 </div>
+            <div class="clear"></div>
+            </div>
+        {% endblock %}
+
+            <!--综合排名 - 结束-->
+            {% block courselist %}
+
+            {% endblock %}
+
+        </div>
+        <div class="fr">
+            {% block hotcourse %}
+
+            {% endblock %}
+
+        </div>
+    </div>
+
+	<div class="clear"></div>
+	<input type="hidden" id="count" value="861"/>
+	<div id="loginDiv" class="none"></div>
+    <!--footer - 开始-->
+	<!--footer - 开始-->
+
+<div class="w1195 footer">
+    	<div class="fl footleft">
+    		<div class="fl hotline">
+            	<div class="hotline-top">
+                	<span class="hotline-num">客服热线：<font>4008-096-959</font></span>
+                	<a href= " "   target="_blank" class="onlinebut">在线咨询</a>
+                </div>
+            </div>
+            <div class="fr foot-er">
+            	<div class="fl official">
+                	<img src="{% static 'images/weixin.jpg' %}"  >
+                	<p>官方微信</p>
+                </div>
+            	<div class="fl official">
+                	<img src="{% static 'images/weibo.png' %}"  >
+                    <p>官方微博</p>
+                </div>
+            </div>
+        </div>
+        <div class="fr footright">
+        	<div class="foot-icp fl">
+            	<p>Copyright © 2017 All Rights Reserved </p>
+            	<p class="icptxt">版权所有：湖南时光钥匙网络有限公司      备案号：湘ICP备17002945号-1</p>
+            	<div style="width:300px;margin:10px 0 0 168px;">
+		 			<a target="_blank" href= " "   style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{% static 'images/beiantubiao.png' %}" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43019002000435号</p></a>
+		 		</div>
+            </div>
+            <div class="tb-foot fl">
+	            <a  key ="59015a73efbfb03b5229e25c"  logo_size="124x47"  logo_type="common"  href= " "   >
+	            <script src="{% static 'js/aq_auth.js' %}"  ></script>
+	            </a>
+            </div>
+        	<div class="fr footlogo">
+            	<img src="{% static 'images/footlogo.jpg' %}" alt="底部logo" />
+            </div>
+        </div>
+</div>
+    <!--右边操作 - 开始-->
+
+<div class="rightside">
+    	<div class="rside">
+      		<div class="downapp">
+            	<a href= " "  style="width:60px;height:60px;background:#e7e7e7;margin-top:1px;text-align:center;">
+                	<i class="icon dowicon"></i>
+                    <span class="commn-span">下载APP</span>
+                </a>
+                <div class="downer">
+                	<img src="{% static 'images/downapp.png' %}"   />
+                    <p>扫描下载APP</p>
+                </div>
+            </div>
+    		<div class="downapp">
+            	<a href= " " class="sidecomm">
+                	<i class="icon feedback"></i>
+                    <span class="commn-span">问题反馈</span>
+                </a>
+            </div>
+            <div class="downapp">
+            	<a href= " "   target="_blank" class=" icon-help-hover">
+                	<i class="icon-help"></i>
+                    <span class="commn-span">帮助中心</span>
+                </a>
+            </div>
+            <div class="downapp back-top">
+            	<a href= " " class="downclick">
+                	<i class="icon backtop"></i>
+                    <span class="commn-span">回到顶部</span>
+                </a>
+            </div>
+    	</div>
+</div>
+
+
+<!--问题反馈 弹窗-->
+    <div class="problem none pshow">
+    	<div class="pro-title">
+        	<a href= " " class="prolose closepup fr"><img src="{% static 'images/prolose.png' %}"   /></a>
+        	您好，我是潭州课堂的产品经理，欢迎您向我们反馈问题、提出宝贵建议
+        </div>
+        <div class="pro-txt">
+        	<div class="pro-tiinput">
+            	<input type="text" id="mailTitle" class="title-input fr" placeholder="请慨括您要反馈的问题" />
+            	<span class="w70">标题：</span>
+                <div class="clear"></div>
+            </div>
+            <div class="pro-tiinput">
+            	<textarea id="mailContent" class="title-input height187 fr" name="" cols="" rows="" placeholder="请慨括您要反馈的问题" ></textarea>
+            	<span class="w70">问题描述：</span>
+                <div class="clear"></div>
+            </div>
+            <div class="pro-but">
+            	<a href= " " class="pro-deter" onclick="onMail()" id="onMail">确定</a>
+            	<a href= " " class="pro-cancel closepup">取消</a>
+            </div>
+    	</div>
+    </div>
+    <div class="mask none closepup"></div><link href="{% static 'css/user/register.css' %}" rel="stylesheet">
+
+<!-- <div id="bandPhone" class="none">
+	<div class="pond-phone-bg">
+	</div>
+	<div class="pond-phone">
+		<img src="https://www.shiguangkey.co{% static 'images/pond-phone-pic.png' %}">
+		<div class="pond-phone-text">
+			<button class="pond-phone-btnNO">取消</button>
+			<button class="pond-phone-btnYes"><a href="/studentAdmin/main.html#contact" target="_blank">去绑定手机号码</a></button>
+		</div>
+	</div>
+</div> -->
+
+<link href="{% static 'css/user/SystemAnnouncement.css' %}" rel="stylesheet">
+
+<div class="SystemAnnouncement none" id="message">
+	<div class="btn-x"><img src="{% static 'images/X-w.png' %}"  ></div>
+	<h1 id="messageType"></h1>
+	<h2 id="messageTitle"></h2>
+	<h3 id="messageCreateTime"></h3>
+	<h4 id="messageContent"></h4>
+	<input id="messageId" type="hidden">
+	<button id="checkDetail" data-type="" onclick="onGetMessage()">查看详情</button>
+</div>
+
+<script type="text/javascript" >
+	$(".btn-x").click(function(){
+	    $(".SystemAnnouncement").hide();
+	});
+</script></body>
+<script type="text/javascript" src="{% static 'js/fi000001.5' %}" ></script>
+<script type="text/javascript" src="{% static 'js/src/common/track.js' %}" ></script>
+<script type="text/javascript" src="{% static 'js/common/layer/layer.js' %}" > </script>
+<script>
+var ossHome="https://res.shiguangkey.com/";
+var token  = $.cookie("token");
+var localhref = location.href;
+var live_url="//www.shiguangkey.com/live/";
+//ga统计
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90486517-17', 'auto');
+  ga('send', 'pageview');
+
+  //IE8 不支持console.log
+  window._console = window.console;
+	window.console = (function (orgConsole) {
+	    return {
+	        log: getConsoleFn("log"),
+	        debug: getConsoleFn("debug"),
+	        info: getConsoleFn("info"),
+	        warn: getConsoleFn("warn"),
+	        exception: getConsoleFn("exception"),
+	        assert: getConsoleFn("assert"),
+	        dir: getConsoleFn("dir"),
+	        dirxml: getConsoleFn("dirxml"),
+	        trace: getConsoleFn("trace"),
+	        group: getConsoleFn("group"),
+	        groupCollapsed: getConsoleFn("groupCollapsed"),
+	        groupEnd: getConsoleFn("groupEnd"),
+	        profile: getConsoleFn("profile"),
+	        profileEnd: getConsoleFn("profileEnd"),
+	        count: getConsoleFn("count"),
+	        clear: getConsoleFn("clear"),
+	        time: getConsoleFn("time"),
+	        timeEnd: getConsoleFn("timeEnd"),
+	        timeStamp: getConsoleFn("timeStamp"),
+	        table: getConsoleFn("table"),
+	        error: getConsoleFn("error"),
+	        memory: getConsoleFn("memory"),
+	        markTimeline: getConsoleFn("markTimeline"),
+	        timeline: getConsoleFn("timeline"),
+	        timelineEnd: getConsoleFn("timelineEnd")
+	    };
+	    function getConsoleFn(name) {
+	        return function actionConsole() {
+	            if (typeof (orgConsole) !== "object") return;
+	            if (typeof (orgConsole[name]) !== "function") return;//�ж�ԭʼconsole�������Ƿ��д˷�������û����ֱ�ӷ���
+	            return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));//����ԭʼ����
+	        };
+	    }
+	}(window._console));
+
+</script>
+<script>
+
+$(function(){
+	//学生信息
+	if(!isEmpty(token)){
+		$.ajax({
+			url:"/api/user/myinfo",
+			type:"POST",
+			dataType : "json",
+			success : function(data) {
+				if(data.data.userDetail!=null){
+					if(data.data.userDetail.headIcon != ''){
+						if(data.data.userDetail.headIcon.substr(0,4)=="http"){
+							$("#imgId").attr('src',data.data.userDetail.headIcon);
+						}else{
+							$("#imgId").attr('src',ossHome+data.data.userDetail.headIcon);
+						}
+					}
+				}
+			}
+		 });
+	}
+
+	$("#searchKey").keydown(function(e){
+		if(e.keyCode==13){
+			searchCourse();
+		}
+	});
+
+
+
+	$("body").on("click","#logout",function(){
+		logout(function(){
+			location.href= location.href;
+		});
+	});
+});
+
+
+
+function isEmpty(val) {
+	val = $.trim(val);
+	if (val == null)
+		return true;
+	if (val == undefined || val == 'undefined')
+		return true;
+	if (val == "")
+		return true;
+	if (val.length == 0)
+		return true;
+	if (!/[^(^\s*)|(\s*$)]/.test(val))
+		return true;
+	return false;
+}
+function searchCourse(){
+    var searchKey = encodeURIComponent($("#searchKey").val().trim());
+	var test = window.location.pathname;
+	if(test == "/course/search"){
+		location.href = "https://www.shiguangkey.com/course/search?key="+searchKey+"&cateKey="+searchKey;
+	}else{
+		window.open("/course/search?key="+searchKey+"&cateKey="+searchKey);
+	}
+}
+
+function tologin(){
+	toLogin(function(data){
+		location.reload();//刷新当前页面
+	});
+}
+
+</script>
+<script src="{% static 'js/common/cate.js-v=2.0.5' %}"  ></script>
+</html>

@@ -1,0 +1,288 @@
+{% extends 'new_base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>潭州课堂 - 全部课程</title>
+{% endblock %}
+
+<!--一级导航全部课程 - 开始-->
+
+{% block class %}
+    <div class="allmod onenav">
+        <span>全部课程：</span>
+         <a href= " " class="comran cateLink" data-id="0">全部</a>
+          <a href= " " data-id="258" class="cateLink">IT互联网</a>
+          <a href= " " data-id="259" class="cateLink">语言留学</a>
+          <a href= " " data-id="261" class="cateLink">创意设计</a>
+          <a href= " " data-id="260" class="cateLink">兴趣生活</a>
+          <a href= " " data-id="264" class="cateLink">生产种植</a>
+          <a href= " " data-id="263" class="cateLink">升学考研</a>
+          <a href= " " data-id="262" class="cateLink">公培考证</a>
+    </div>
+{% endblock %}
+
+<!--二级导航全部课程 - 开始-->
+{% block sort %}
+     <div class="allranking bgfff allnaviga">
+	                 <a href= " " class="comran cateLink"data-id="">全部</a>
+	                 	<a href= " "  class="cateLink">编程语言</a>
+	                 	<a href= " " data-id="265" class="cateLink">互联网产品</a>
+	                 	<a href= " " data-id="266" class="cateLink">互联网营销</a>
+	                 	<a href= " " data-id="300" class="cateLink">农业种植</a>
+	                 	<a href= " " data-id="298" class="cateLink">考研</a>
+	                 	<a href= " " data-id="296" class="cateLink">办公效率</a>
+	                 	<a href= " " data-id="294" class="cateLink">视觉设计</a>
+	                 	<a href= " " data-id="288" class="cateLink">英语</a>
+	                 	<a href= " " data-id="268" class="cateLink">前端开发</a>
+	                 	<a href= " " data-id="468" class="cateLink">出国留学</a>
+	                 	<a href= " " data-id="431" class="cateLink">职场人生</a>
+	                 	<a href= " " data-id="561" class="cateLink">大学</a>
+	                 	<a href= " " data-id="352" class="cateLink">日语</a>
+	                 	<a href= " " data-id="406" class="cateLink">居家生活</a>
+	                 	<a href= " " data-id="564" class="cateLink">高中</a>
+	                 	<a href= " " data-id="355" class="cateLink">韩语</a>
+	                 	<a href= " " data-id="414" class="cateLink">运动健康</a>
+	                 	<a href= " " data-id="505" class="cateLink">设计软件</a>
+	                 	<a href= " " data-id="439" class="cateLink">公务员</a>
+	                 	<a href= " " data-id="422" class="cateLink">文艺修养</a>
+	                 	<a href= " " data-id="533" class="cateLink">游戏美术设计</a>
+	                 	<a href= " " data-id="445" class="cateLink">事业单位</a>
+	                 	<a href= " " data-id="568" class="cateLink">初中</a>
+	                 	<a href= " " data-id="358" class="cateLink">小语种</a>
+	                 	<a href= " " data-id="539" class="cateLink">动漫游戏</a>
+	                 	<a href= " " data-id="572" class="cateLink">小学</a>
+	                 	<a href= " " data-id="544" class="cateLink">摄影影视</a>
+	                 	<a href= " " data-id="548" class="cateLink">环境艺术</a>
+	                 	<a href= " " data-id="374" class="cateLink">移动开发</a>
+	                 	<a href= " " data-id="552" class="cateLink">工业设计</a>
+	                 	<a href= " " data-id="379" class="cateLink">测试运维</a>
+	                 	<a href= " " data-id="384" class="cateLink">游戏开发</a>
+	                 	<a href= " " data-id="389" class="cateLink">软件研发</a>
+	                 	<a href= " " data-id="393" class="cateLink">数据处理</a>
+	                 	<a href= " " data-id="398" class="cateLink">硬件开发</a>
+	                 	<a href= " " data-id="599" class="cateLink">后端开发</a>
+	                 	<a href= " " data-id="675" class="cateLink">人工智能</a>
+                 <div class="clear"></div>
+            </div>
+{% endblock %}
+
+<!--综合排名 - 开始-->
+{% block filter %}
+    <div class="allranking bgfff">
+           	<div class="fl w495">
+                    <a href= " " class="comran">综合排序</a>
+                    <a href="?price=0" id="free"><span class="rankchec {% ifequal price '0' %} checked {% endifequal %}"></span>免费公开课</a>
+                    <a href="?price=1" id="vip"> <span class="rankchec {% ifequal price '1' %} checked {% endifequal %}"></span>VIP课程</a>
+
+                 </div>
+            <div class="clear"></div>
+            </div>
+{% endblock %}
+   <!--综合排名 - 结束-->
+{% block courselist %}
+   <div class="bgfff mh500" >
+                <div class="courseall">
+
+                    {% for course in all_course %}
+                        <div class="course-item w192 h240 fl">
+                            <div class="courimg">
+                                <!-- TODO添加详情页链接 -->
+                                <a href= " "   target="_blank" class="cimg courtxt-img">
+                                    <img src="{{ MEDIA_URL }}{{ course.image }}"   />
+                                </a>
+                                {% ifequal course.price 0 %}
+                                <div class="cour-icon">
+                                        <span class="publicimg"><img src="{% static 'images/public.png' %}"  ></span>
+                                </div>
+                                    {% else %}
+                                    <div class="cour-icon">
+                                        <span class="publicimg"><img src="{% static 'images/vip.png' %}"  ></span>
+                                </div>
+                                {% endifequal %}
+                                <!-- TODO添加直播链接 -->
+                                <a href= " " target="_blank" class="clive live_status_true">上课中</a>
+                                <div class="none" id="1852_cate_flase">
+                                    <a href= " "  class="clive"  value="1852">上课中</a>
+                                </div>
+                            </div>
+                            <div class="item-line">
+                                <div class="itemcont">
+                                    <a href= " "   title="原画插画绘画学习" target="_blank" class="ictxt">
+                                     {{ course.name }}
+                                    </a>
+                                </div>
+                                    <span class="green">
+                                        {{ course.price }}
+                                    </span>
+                                <!-- href="/school/" target="_blank"  -->
+                                <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>2172人</a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                  {% endfor %}
+
+
+                </div>
+			 <div class="clear"></div>
+		 	 <div id="pageTool"></div>
+             <div class="clear"></div>
+            </div>
+{% endblock %}
+
+<!-- 热门课程 -->
+{% block hotcourse %}
+<div class="bgfff w285">
+    <div class="all-title">
+        <span>热门推荐</span>
+    </div>
+
+        <div class="course-item w253 bortop fl">
+                <div class="courimg">
+                    <a href= " "   target="_blank" class="cimg">
+                        <img src="{% static 'img/file/201803/28/20180328125038130545983.jpg!mall_course_c.png' %}"   />
+                    </a>
+                    <div class="cour-icon">
+                            <span class="publicimg"><img src="{% static 'images/public.png' %}"  ></span>
+                    </div>
+                    <!--<div class="ctxt">-->
+                        <!---->
+                    <!--</div>-->
+                        <!-- TODO添加直播链接 -->
+                        <a href= " " target="_blank" class="clive live_status_true">上课中</a>
+                    <div class="none" id="1576_cateHot_flase">
+                        <a href= " "  class="clive"  value="1576">上课中</a>
+                    </div>
+                </div>
+                <div class="item-line">
+                    <div class="itemcont">
+                        <a href= " "   title="WEB前端0基础试听教室" target="_blank" class="ictxt">
+                            WEB前端0基础试听教室
+                        </a>
+                    </div>
+                        <span class="green">
+                            免费
+                        </span>
+                    <!-- href="/school/" target="_blank"  -->
+                    <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>18118人</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        <div class="course-item w253 bortop fl">
+                <div class="courimg">
+                    <a href= " "   target="_blank" class="cimg">
+                        <img src="{% static 'img/file/201803/26/20180326165950318287744-1.png!mall_course_c.png' %}"   />
+                    </a>
+                    <div class="cour-icon">
+                            <span class="vipimg"><img src="{% static 'images/vip.png' %}"  ></span>
+                    </div>
+                    <!--<div class="ctxt">-->
+                        <!---->
+                    <!--</div>-->
+                    <div class="none" id="1930_cateHot_flase">
+                        <a href= " "  class="clive"  value="1930">上课中</a>
+                    </div>
+                </div>
+                <div class="item-line">
+                    <div class="itemcont">
+                        <a href= " "   title="2018年多省联考行测文科精英特惠课" target="_blank" class="ictxt">
+                            2018年多省联考行测文科精英特惠课
+                        </a>
+                    </div>
+                        <span class="coloryell">
+                            9.9元
+                        </span>
+                    <!-- href="/school/" target="_blank"  -->
+                    <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>4880人</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        <div class="course-item w253 bortop fl">
+                <div class="courimg">
+                    <a href= " "   target="_blank" class="cimg">
+                        <img src="{% static 'img/file/201803/28/20180328125203467220577.jpg!mall_course_c.png' %}"   />
+                    </a>
+                    <div class="cour-icon">
+                            <span class="publicimg"><img src="{% static 'images/public.png' %}"  ></span>
+                    </div>
+                    <!--<div class="ctxt">-->
+                        <!---->
+                    <!--</div>-->
+                    <div class="none" id="1837_cateHot_flase">
+                        <a href= " "  class="clive"  value="1837">上课中</a>
+                    </div>
+                </div>
+                <div class="item-line">
+                    <div class="itemcont">
+                        <a href= " "   title="Python从零基础到项目实战（项目篇）" target="_blank" class="ictxt">
+                            Python从零基础到项目实战（项目篇）
+                        </a>
+                    </div>
+                        <span class="green">
+                            免费
+                        </span>
+                    <!-- href="/school/" target="_blank"  -->
+                    <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>13045人</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        <div class="course-item w253 bortop fl">
+                <div class="courimg">
+                    <a href= " "   target="_blank" class="cimg">
+                        <img src="{% static 'img/file/201803/28/20180328123527509065759.jpg!mall_course_c.png' %}"   />
+                    </a>
+                    <div class="cour-icon">
+                            <span class="publicimg"><img src="{% static 'images/public.png' %}"  ></span>
+                    </div>
+                    <!--<div class="ctxt">-->
+                        <!---->
+                    <!--</div>-->
+                    <div class="none" id="1711_cateHot_flase">
+                        <a href= " "  class="clive"  value="1711">上课中</a>
+                    </div>
+                </div>
+                <div class="item-line">
+                    <div class="itemcont">
+                        <a href= " "   title="C语言从基础到项目实战" target="_blank" class="ictxt">
+                            C语言从基础到项目实战
+                        </a>
+                    </div>
+                        <span class="green">
+                            免费
+                        </span>
+                    <!-- href="/school/" target="_blank"  -->
+                    <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>5836人</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        <div class="course-item w253 bortop fl">
+                <div class="courimg">
+                    <a href= " "   target="_blank" class="cimg">
+                        <img src="{% static 'img/file/201803/28/20180328125340897436717.jpg!mall_course_c.png' %}"   />
+                    </a>
+                    <div class="cour-icon">
+                            <span class="publicimg"><img src="{% static 'images/public.png' %}"  ></span>
+                    </div>
+                    <!--<div class="ctxt">-->
+                        <!---->
+                    <!--</div>-->
+                    <div class="none" id="961_cateHot_flase">
+                        <a href= " "  class="clive"  value="961">上课中</a>
+                    </div>
+                </div>
+                <div class="item-line">
+                    <div class="itemcont">
+                        <a href= " "   title="潭州农业蔬菜种植技术公开课" target="_blank" class="ictxt">
+                            潭州农业蔬菜种植技术公开课
+                        </a>
+                    </div>
+                        <span class="green">
+                            免费
+                        </span>
+                    <!-- href="/school/" target="_blank"  -->
+                    <a class="item-txt w112 fr"><span style="color: #888;">报名人数：</span>8033人</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+    <div class="clear"></div>
+</div>
+{% endblock %}

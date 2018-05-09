@@ -28,10 +28,8 @@ class CourseList(View):
         # 取出第二分类的di
         sort_id = request.GET.get('sort_id', "")
         if sort_id:
-
+            course_class = course_class.filter(coursesort__id=int(sort_id))
             all_course = all_course.filter(sort_id=int(sort_id))
-
-
 
         # 需要对是不是公开课的的价格做筛选
         price = request.GET.get('price', "")
@@ -52,8 +50,6 @@ class CourseList(View):
 
         all_course = p.page(page)
 
-
-
         return render(request, 'course_list.htm', {"course_class": course_class,
                                                    "course_sort": course_sort,
                                                    "all_course": all_course,
@@ -66,18 +62,41 @@ class CourseList(View):
 
 class CourseDetailView(View):
     def get(self, request, course_id):
-        course = Course.objects.filter(id=int(course_id))
-        teacher = Teacher.objects.filter(teacher_course_id=course_id)[0]
-        return render(request, 'course_detail.htm', {"course": course,
-                                                     "teacher": teacher})
+        course = Course.objects.get(id=int(course_id))
+
+        # 每次点击进页面之后增加点击数
+        course.click_num += 1
+        course.save()
+
+        teacher = Teacher.objects.get(teacher_course_id=course_id)
+        if teacher:
+            return render(request, 'course_detail.htm', {"course": course,
+                                                         "teacher": teacher})
+        else:
+            return render(request, 'course_detail.htm', {"course": course})
 
 
 class LessonDetailView(View):
     def get(self, request, course_id):
         if course_id:
-            course = Course.objects.filter(id=int(course_id))
+            course = Course.objects.filter(id=int(course_id))[0]
             lessons = Lesson.objects.filter(lesson_course_id=course_id)
             teacher = Teacher.objects.filter(teacher_course_id=course_id)[0]
             return render(request, 'course_lesson.html', {"course": course,
                                                           "lessons": lessons,
                                                           "teacher": teacher})
+
+
+class TestView(View):
+    def get(self, request):
+        all_course = Course.objects.all()
+
+        price = request.GET.get('price', "")
+        if price == '0':
+            all_course = all_course.filter(price=0)
+        else:
+            all_course = all_course.filter(price__gt=0)
+
+
+        return render(request, 'list.htm', {"all_course":all_course,
+                                            "price":price})

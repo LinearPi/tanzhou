@@ -61,7 +61,7 @@
                 <div class="course-item w192 h240 fl">
                     <div class="courimg">
                         <!-- TODO添加详情页链接 -->
-                        <a href="/course/details/{{ course.id }}" target="_blank" class="cimg courtxt-img">
+                        <a href="{% url 'course:details' course.id %}" target="_blank" class="cimg courtxt-img">
                             <img src="{{ MEDIA_URL }}{{ course.image }}"/>
                         </a>
                         <div class="cour-icon">
@@ -74,7 +74,7 @@
                         </div>
                         <!-- TODO添加直播链接 -->
 
-                        <a href="/course/details/{{ course.id }}" target="_blank" class="clive live_status_true">上课中</a>
+                        <a href="{% url 'course:details' course.id %}" target="_blank" class="clive live_status_true">上课中</a>
                         <div class="none" id="1852_cate_flase">
                             <a href="" class="clive">上课中</a>
                         </div>
@@ -164,7 +164,7 @@
             {% for hcourse in hot_course %}
             <div class="course-item w253 bortop fl">
                 <div class="courimg">
-                    <a href=" " target="_blank" class="cimg">
+                    <a href="{% url 'course:details' hcourse.id %}" target="_blank" class="cimg">
                         <img src="{{ MEDIA_URL }}{{ hcourse.image }}"/>
                     </a>
                     {% ifequal hcourse.price 0 %}

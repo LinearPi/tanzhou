@@ -1,0 +1,324 @@
+{% extends 'my_base.html' %}
+{% load static %}
+
+{% block css %}
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+#a1{
+    text-decoration: none;
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    border: 1px solid #d9dae3;
+    border-radius: 3px;
+    color: #55595c;
+    text-align: center;
+    cursor: pointer;
+    margin-top:15px;
+}
+#shadow{
+    position: absolute;
+    opacity: 0.5;
+    filter:alpha(opacity=50); {#为了兼容IE8一下的 #}
+    bottom:0;
+    left: 0;
+    right: 0;
+    top: 0; {#设置四个方位，遮罩层就可以平铺整个屏幕了#}
+    background: black;
+    z-index: 100;
+    display: none;
+}
+
+.rc_dialog{
+    width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top:50px;
+    left: 35%;
+    display: none;
+    z-index: 101;
+}
+.rc_dialog_content{
+    border-radius: 6px 6px;
+    background: #fff;
+    background-clip:padding-box;
+}
+
+.rc-dialog-header{
+    padding: 13px 20px 14px;
+    border-radius: 5px 5px 0 0;
+    color: #666;
+    border-bottom: 1px solid #e9e9e9;
+}
+.rc-dialog-title{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+}
+.rc-dialog-body{
+    padding: 20px;
+
+}
+._1L2Ya{
+    text-align: center;
+}
+._3KQuG{
+    padding: 4px 10px;
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    line-height: 20px;
+    color: #666;
+    background:#fff url(" {% static 'images/data_image.png' %} ") no-repeat;
+    position: relative;
+}
+
+.file_upload{
+    opacity: 0; /*使得input变得不可见了*/
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.rc-dialog-footer{
+    border-top: 1px solid #e9e9e9;
+    padding:10px 20px 10px 10px;
+    text-align:right;
+}
+._1T5zd,.EMvBg{
+    width: 100px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    border-radius:3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+._1T5zd{
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+.EMvBg{
+    background: #3073f4;
+    color: #fff;
+
+}
+
+.xb11w{
+    width: 110px;
+    height: 110px;
+    border: 1px solid #e4e5e8;
+    float:left;
+}
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+               <div class="content"><h1 class="contentTitle">个人资料</h1>
+                <div class="contentBody">
+                    <div class="B6J2b">
+                        <div class="TZ-Tab TZ-Tab-top">
+                            <div role="tablist" class="TZ-Tab-bar" tabindex="0">
+                                <div class="TZ-Tab-nav-container"><span unselectable="unselectable"
+                                                                        class="TZ-Tab-tab-prev TZ-Tab-tab-btn-disabled"><span
+                                        class="TZ-Tab-tab-prev-icon"></span></span><span unselectable="unselectable"
+                                                                                         class="TZ-Tab-tab-next TZ-Tab-tab-btn-disabled"><span
+                                        class="TZ-Tab-tab-next-icon"></span></span>
+                                    <div class="TZ-Tab-nav-wrap">
+                                        <div class="TZ-Tab-nav-scroll">
+                                            <div class="TZ-Tab-nav TZ-Tab-nav-animated">
+                                                <div class="TZ-Tab-ink-bar TZ-Tab-ink-bar-animated"
+                                                     style="display: block; transform: translate3d(0px, 0px, 0px); width: 96px;"></div>
+                                                <div role="tab" aria-disabled="false" aria-selected="true"
+                                                     class="TZ-Tab-tab-active TZ-Tab-tab">个人信息
+                                                </div>
+                                                <div role="tab" aria-disabled="false" aria-selected="false"
+                                                     class=" TZ-Tab-tab">修改密码
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="TZ-Tab-content TZ-Tab-content-animated"
+                                 style="transform: translateX(0%) translateZ(0px);">
+                                <div role="tabpanel" aria-hidden="false" class="TZ-Tab-tabpane TZ-Tab-tabpane-active">
+                                    <div>
+                                        <form id="form1" action="" method="post" enctype="multipart/form-data">
+                                            <table cellspacing="15px" cellpadding="" class="_3liV0">
+                                                <tbody>
+                                                <tr>
+                                                    <td>账号：</td>
+                                                    <td>{{request.user.username}}<a
+                                                            href="{% url 'i:changePwd' %}" class="_3RrAT">修改密码</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span>昵称：</span><i>*</i></td>
+                                                    <td><input type="text" class="_1zVvg"
+                                                               placeholder="昵称长度2-15个字，可以是汉字、字母或数字" value="{{request.user.nick_name}}">
+                                                        <p class="_1Qh6M"></p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>头像：</td>
+                                                    <td>
+                                                        <div class="xb11w">
+                                                         {% if  request.user.head_img %}
+                                                               <img src="{{ MEDIA_URL }}{{ request.user.head_img }}" alt="头像" width="110px" height="110px">
+                                                         {% else %}
+                                                             <img src="{% static 'images/default.png'%}" alt="头像">
+                                                         {% endif %}
+
+                                                        </div>
+                                                        <div class="_2XHQG">
+                                                            <div>支持jpg、gif、png或bmp格式的图片，小于5M</div>
+                                                            <a id="a1" href="javascript:;">修改头像</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                    <div id="shadow"></div>
+        <div id="rc_dialog" class="rc_dialog">
+            <div class="rc-dialog-content">
+                <div class="rc-dialog-header">
+                    <div class="rc-dialog-title">
+                        图片上传
+                    </div>
+                </div>
+                    <div class="rc-dialog-body">
+                        <div class="_1L2Ya">
+                            <div class="_3KQuG" title="选择文件">
+                                <input type="file" name="head_img" onchange="previewFile()" class="file_upload">
+                            </div>
+                            <hr>
+                            <!--<canvas id="myCanvas" width="350" height="350" style="width: 350px;height: 350px;border:1px solid #000000;"></canvas>-->
+                            <img id="myimg" src="{% static 'images/default.png' %}" alt=""  style="width: 200px;height: 200px;border:1px solid rgba(0,0,0,0.3);"/>
+                        </div>
+                    </div>
+                    <div class="rc-dialog-footer">
+                         <input type="button" value="取消" id="btn1" class="_1T5zd">
+                         <input type="submit" value="确认" id="btn2" class="EMvBg">
+                    </div>
+            </div>
+        </div>
+
+
+
+
+                                                <tr>
+                                                    <td>性别：</td>
+                                                    <td><label class="_10Fbo"><input type="radio" value="1"
+                                                                                     name="infoSexRadio">
+                                                        <!-- react-text: 103 --> 男<!-- /react-text --></label><label
+                                                            class="_10Fbo"><input type="radio" value="0"
+                                                                                  name="infoSexRadio">
+                                                        <!-- react-text: 106 --> 女<!-- /react-text --></label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>常用邮箱：</td>
+                                                    <td><input type="text" class="_7oaxl" placeholder="如：name@example.com"
+                                                               value=""><a href="javascript:;" class="iZB-C">验证邮箱</a><br>
+                                                        <p class="_1Qh6M">用于优质课程的学习提醒等服务，邮箱不会对外公开，请放心</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>手机号码：</td>
+                                                    <td><input type="text" class="_7oaxl" placeholder="请输入手机号码"
+                                                               value="18780236045"><a href="javascript:;" class="_1DnDc">验证手机</a><br>
+                                                        <p class="_1Qh6M">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span>绑定QQ：</span><i>*</i></td>
+                                                    <td><input type="qq" class="_7oaxl" placeholder="请输入常用的QQ号码" value="">
+                                                        <p class="_1Qh6M"></p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>生日：</td>
+                                                    <td><input placeholder="选择日期" class="_24gyZ" readonly="" value=""></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>简介：</td>
+                                                    <td><textarea maxlength="150" class="_2Q8lf"
+                                                                  placeholder="请填写简介，15~150个字之间"></textarea></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                        <td><input type="submit" value="确定" id="btn3" class="EMvBg"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table><!-- react-empty: 140 --><!-- react-empty: 141 -->
+                                                        {% csrf_token %}
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <div role="tabpanel" aria-hidden="true"
+                                     class="TZ-Tab-tabpane TZ-Tab-tabpane-inactive"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block js %}
+<script language=javascript>
+
+var a1 = document.getElementById("a1");
+var oshadow = document.getElementById("shadow");
+var dialog = document.getElementById("rc_dialog");
+
+a1.onclick = function () {
+    oshadow.style.display='block';
+    dialog.style.display='block';
+};
+
+
+function previewFile() {
+ var preview = document.getElementById('myimg'); <!--获取当前img对象-->
+ var file  = document.querySelector('input[type=file]').files[0]; <!--可以获取到Filelist对象，每个File对象包括了一些文件的基本信息，信息能够拿到-->
+ var reader = new FileReader(); ////创建FileReader接口（把文件放到图片预览框里面）
+
+ reader.onloadend = function () { <!--onloadend 读取数据成功后触发 -->
+     preview.src = reader.result;
+     <!--将读取到的内容当前img用于预览-->
+ }
+ if (file) {
+  reader.readAsDataURL(file); <!--读取数据，result属性被设置为Data URI Scheme形式 -->
+ } else {
+  preview.src = "../static/images/data_image.png";
+ }
+}
+
+var oBox = document.getElementById("box");
+var fm1 =  document.getElementById("form1");
+
+var oBtn = document.getElementById("btn2");
+var oBtn3 = document.getElementById("btn3");
+
+    oBtn.onclick = function () {
+        fm1.action = "/i/imageUpload/";
+       fm1.submit();
+        oBox.style.display = "none";
+
+    };
+
+oBtn3.onclick = function () {
+       fm1.action = "/login/";
+       fm1.submit();
+    };
+
+</script>
+
+{% endblock %}

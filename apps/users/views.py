@@ -192,7 +192,9 @@ class UserInfoView(LoginRequiredMixin, View):
 class ChangePwdView(LoginRequiredMixin, View):
     def get(self, request):
         email = request.user.email
-        return render(request, 'my_paasword.html', {'email': email})
+        page_name = 'info'
+        return render(request, 'my_paasword.html', {'email': email,
+                                                    "page_name": page_name})
 
     def post(self, request):
         change_form = ChangePwdForm(request.POST)
@@ -273,3 +275,4 @@ class UploadImageView(LoginRequiredMixin, View):
     #         return HttpResponseRedirect(reverse("i:info"))
     #     else:
     #         return render(request, 'my_info.html')
+

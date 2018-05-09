@@ -43,7 +43,7 @@
 
                 <div class="thelogin " id="">
                     <div class="personal fr">
-                        <a href="{% url 'index' %}" target="_blank" class="perimg"><img id="imgId" src="{% static 'images/default.png' %}"></a>
+                        <a href="{% url 'index' %}" target="_blank" class="perimg"><img id="imgId" src="{{ MEDIA_URL }}{{ request.user.image }}"></a>
                         <div class="peohover">
                             <i class="icon pericon"></i>
                             <ul class="perul">
