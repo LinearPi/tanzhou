@@ -33,20 +33,20 @@
                 <div class="unslider-arrow next"></div>
             </div>
             <div class="fl form-box">
-                <h2>忘记密码</h2>
+                <h2>升级用户</h2>
 
 
-                <form id="jsFindPwdForm" method="post" action="{% url 'forget_pwd' %}" autocomplete="off">
+                <form id="jsFindPwdForm" method="post" action="{% url 'update_use' %}" autocomplete="off">
 
-                    <div class="form-group marb20 {% if forget_form.errors.email %}errorput{% endif %}">
+                    <div class="form-group marb20 {% if update_from.errors.email %}errorput{% endif %}">
                         <label>帐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</label>
-                        <input type="text" id="account" name="email" value="{% if forget_from.email.errors %}{% else %}{{ forget_from.email.value }}{% endif  %}" placeholder="邮箱" />
+                        <input type="text" id="account" name="email" value="{% if update_from.email.errors %}{% else %}{{ update_from.email.value }}{% endif  %}" placeholder="邮箱" />
                     </div>
                     <div class="form-group captcha1 marb38">
                         <label>验&nbsp;证&nbsp;码</label>
-                        {{ forget_from.captcha }}
+                        {{ update_from.captcha }}
                     </div>
-                    <div class="error btns" id="jsForgetTips">{% for key,value in forget_form.errors.items %}{{ value }}{% endfor %}{{ msg }}</div>
+                    <div class="error btns" id="jsForgetTips">{% for key,value in update_from.errors.items %}{{ value }}{% endfor %}{{ msg }}</div>
                     <input type="hidden" name="sms_type" value="1">
                     <input class="btn btn-green" id="jsFindPwdBtn" type="submit" value="提交" />
                     <p class="form-p" style="bottom:40px;">您还可以<a href="{% url 'login' %}"> [直接登录]</a></p>

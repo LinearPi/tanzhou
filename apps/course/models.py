@@ -79,3 +79,6 @@ class Buy(models.Model):
     user = models.ForeignKey(UserInfo, verbose_name=u"用户")
     course = models.ForeignKey(Course, verbose_name=u"课程")
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"购买时间")
+
+    def buy_course(self):
+        pass

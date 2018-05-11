@@ -29,7 +29,15 @@
                         href="https://www.shiguangkey.com/course/list">全部课程</a><a
                         href="https://www.shiguangkey.com/help/downloadApp">客户端</a></div>
                 <div class="_9URcm"><input type="text" placeholder="搜索课程关键词"><a href="javascript:;">搜索</a></div>
-                <div class="YrVqW"><img title="山泉" src="{% static 'images/default.png' %}"  alt="山泉"><span></span>
+                <div class="YrVqW"><span>
+
+                    {% if  request.user.image %}
+                            <img src="{{ MEDIA_URL }}{{ request.user.image }}" alt="头像" width="110px" height="110px">
+                        {% else %}
+                            <img src="{% static 'images/default.png'%}" alt="头像">
+                        {% endif %}
+
+                </span>
                     <ul>
                         <li><a href="javascript:;">退出登录</a></li>
                     </ul>

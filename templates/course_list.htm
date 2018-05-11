@@ -35,8 +35,8 @@
                 {{ classes.get_name_display }}
 
             </a>
-        {% endfor %}
 
+        {% endfor %}
     </div>
 {% endblock %}
 
@@ -50,6 +50,12 @@
 
         <div class="clear"></div>
     </div>
+       {% for leson in all_lesson %}
+
+        <div>{{ leson.name }}</div>
+
+    {% endfor %}
+
 {% endblock %}
 
 {% block courselist %}

@@ -1,15 +1,15 @@
 {% extends 'my_base.html' %}
 {% load staticfiles %}
-{% block title %}<title>潭州课堂 - 个人中心</title>{% endblock %}
+{% block title %}<title>潭州课堂 - 老师中心</title>{% endblock %}
 
 {% block custom_css %}
 
 {% endblock %}
 
-
-
+{% block navigation %}
+{% endblock %}
 {% block content %}
-    <div class="content"><h1 class="contentTitle">个人资料</h1>
+    <div class="content"><h1 class="contentTitle">老师资料</h1>
         <div class="contentBody">
             <div class="B6J2b">
                 <div class="TZ-Tab TZ-Tab-top">
@@ -21,16 +21,7 @@
                                 class="TZ-Tab-tab-next-icon"></span></span>
                             <div class="TZ-Tab-nav-wrap">
                                 <div class="TZ-Tab-nav-scroll">
-                                    <div class="TZ-Tab-nav TZ-Tab-nav-animated">
-                                        <div class="TZ-Tab-ink-bar TZ-Tab-ink-bar-animated"
-                                             style="display: block; transform: translate3d(0px, 0px, 0px); width: 96px;"></div>
-                                        <div role="tab" aria-disabled="false" aria-selected="true"
-                                             class="TZ-Tab-tab-active TZ-Tab-tab"><a href="{% url 'i:info' %}">个人信息</a>
-                                        </div>
-                                        <div role="tab" aria-disabled="false" aria-selected="false"
-                                             class=" TZ-Tab-tab"><a href="{% url 'i:change_pwd' %}">修改密码</a>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -42,39 +33,16 @@
                             <div>
 
                                 <table cellspacing="15px" cellpadding="" class="_3liV0">
-
-                                    <form class="clearfix" id="jsAvatarForm" enctype="multipart/form-data"
-                                          autocomplete="off" method="post" action="{% url 'i:image_upload' %}"
-                                          target='frameFile'>
-
-                                        <label class="changearea" for="avatarUp">
-                                            <span id="avatardiv" class="pic">
-                                                <img width="100" height="100" class="js-img-show" id="avatarShow"
-                                                     src="{{ MEDIA_URL }}{{ request.user.image }}"/>
-                                            </span>
-                                            <span class="fl upload-inp-box" style="margin-left:70px;">
-                                                <span class="button btn-green btn-w100" id="jsAvatarBtn">修改头像</span>
-
-                                                <input type="file" name="image" id="avatarUp" class="js-img-up"/>
-
-                                            </span>
-                                        </label>
-
-                                        <input class="_2qCjw" id="jsLoginBtn" type="submit" value="确定"/>
-                                        {% csrf_token %}
-                                    </form>
-
                                 </table>
                                 <hr>
 
-                                <form action="{% url 'i:info' %}" method="post">
+                                <form action="{% url 'update_sure' %}" method="post">
+
                                     <table cellspacing="15px" cellpadding="" class="_3liV0">
                                         <tbody>
                                         <tr>
                                             <td>账号：</td>
-
                                             <td>{{ request.user.username }}
-                                                <a href="{% url 'i:change_pwd' %}" class="_3RrAT">修改密码</a>
                                             </td>
 
                                         </tr>
@@ -102,18 +70,14 @@
                                             <td>常用邮箱：</td>
                                             <td><input type="text" class="_7oaxl" placeholder="name@example.com"
                                                        name="email" readonly="readonly"
-                                                       value="{{ request.user.email }}"><a href="javascript:;"
-                                                                                           class="iZB-C">验证邮箱</a><br>
-                                                <p class="_1Qh6M">用于优质课程的学习提醒等服务，邮箱不会对外公开，请放心</p></td>
+                                                       value="{{ request.user.email }}"></td>
                                         </tr>
                                         <tr>
                                             <td>手机号码：</td>
                                             <td><input type="text" class="_7oaxl" placeholder="请输入手机号码" name="phone"
 
                                                        value="{{ request.user.phone }}">
-                                                <div id="jsChangePhoneDialog" class="_1DnDc">验证手机</div>
-                                                <br>
-                                                <p class="_1Qh6M">用于优质课程的学习提醒等服务，手机号不会对外公开，请放心</p></td>
+                                               </td>
                                         </tr>
                                         <tr>
                                             <td><span>绑定QQ：</span><i>*</i></td>
@@ -123,12 +87,9 @@
                                         </tr>
                                         <tr>
                                             <td>生日：</td>
-                                            <td>
-                                                <input type="text"  value="{{ request.user.birthday | default_if_none:'' }}">
-
-                                            <input placeholder="选择日期" class="_24gyZ"  style="width: 130px"
-                                                       name="birthday" type="date" ></td>
-
+                                            <td><input placeholder="选择日期" class="_24gyZ" readonly="readonly"
+                                                       name="birthday"
+                                                       value="{{ request.user.birthday | default_if_none:'' }}"></td>
                                         </tr>
                                         <tr>
                                             <td>简介：</td>
@@ -139,21 +100,14 @@
                                             <td>
                                                 <input class="_2qCjw" id="" type="submit" value="确定"/>
                                             </td>
-
+                                        </tr>
+                                        <tr>
+                                            <td>{% for key,value in modify_form.errors.items %}{{ value }}{% endfor %}</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                     {% csrf_token %}
                                 </form>
-                                {% if request.user.is_staff %}
-                                    
-                                    {% else %}
-                                <table cellspacing="15px" cellpadding="" class="_3liV0">
-                                    <label class="_2qCjw" for="avatarUp">
-                                        <div><a href="{% url 'update_use' %}">我要当老师</a></div>
-                                    </label>
-                                </table>
-                            {% endif %}
 
                             </div>
 

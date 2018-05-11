@@ -22,10 +22,17 @@
                 <div class="_3it4G"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}"
                                                                                 alt="logo"></a></div>
                 <div class="_3phvK"><a href="{% url 'index' %}">首页</a><a
-                        href="https://www.shiguangkey.com/course/list">全部课程</a><a
+                        href="{% url 'course:list' %}">全部课程</a><a
                         href="https://www.shiguangkey.com/help/downloadApp">客户端</a></div>
                         <div class="_9URcm"><input type="text" placeholder="搜索课程关键词"><a href="javascript:;">搜索</a></div>
-                        <div class="YrVqW"><img title="" src="{{ MEDIA_URL }}{{ request.user.image }}" alt=""><span></span>
+                        <div class="YrVqW">
+                        <span>
+                        {% if  request.user.image %}
+                            <img src="{{ MEDIA_URL }}{{ request.user.image }}" alt="头像" width="110px" height="110px">
+                        {% else %}
+                            <img src="{% static 'images/default.png'%}" alt="头像">
+                        {% endif %}
+                        </span>
                     <ul>
                         <li><a href="{% url 'logout' %}">退出登录</a></li>
                     </ul>
@@ -33,7 +40,7 @@
             </div>
         </div>
         <div class="main">
-
+{% block navigation %}
     <div class="_3e23-">
         <ul>
             <li class="{% ifequal page_name 'course' %}hWd71{% endifequal %}"><a href="{% url 'i:course' %}">我的课程表</a>
@@ -44,7 +51,7 @@
             <li class="{% ifequal page_name 'info' %}hWd71{% endifequal %}"><a href="{% url 'i:info' %}">个人资料</a></li>
         </ul>
     </div>
-
+{% endblock %}
 
             {% block content %}
 

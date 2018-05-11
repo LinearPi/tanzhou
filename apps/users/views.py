@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.views import View
 
 from users.forms import LoginForm, RegisterForm, ForgetPwdForm, ModifyPwdForm, ChangePwdForm, UploadImageForm, \
-    UploadInfoForm
+    UploadInfoForm, UpdateUseForm, UpdateSureForm
 from users.models import UserInfo, EmailVerify
 from course.models import Course
 from utils.email_send import send_register_email
@@ -276,3 +276,59 @@ class UploadImageView(LoginRequiredMixin, View):
     #     else:
     #         return render(request, 'my_info.html')
 
+
+# 提升权限
+class UpdateUseView(View):
+    def get(self, request):
+        update_from = UpdateUseForm()
+        return render(request, 'update_sub.html', {'update_from': update_from})
+
+    def post(self, request):
+        update_from = UpdateUseForm(request.POST)
+        if update_from.is_valid():
+            email = request.POST.get("email", "")
+            # 与数据库做对比
+            user = UserInfo.objects.get(email=email)
+            if user:
+                if user.is_active:
+                    send_register_email(email, 'update')
+                    return render(request, 'update_success.html', {'email': email})
+                else:
+                    return render(request, 'update_sub.html', {'msg': u"用户未激活!!",
+                                                               'update_from': update_from
+                                                               })
+
+            return render(request, 'update_sub.html', {'msg': u"用户不存在!!",
+                                                       'update_from': update_from})
+        else:
+            return render(request, 'update_sub.html', {'update_from': update_from})
+
+
+# 显示升级的页面
+class UpdateView(View):
+
+    def get(self, request, update_code):
+        all_records = EmailVerify.objects.filter(code=update_code)
+        if all_records:
+            for record in all_records:
+                email = record.email
+                return render(request, "update_sure.html", {"email": email})
+
+
+# 升级确认页面的提交
+class ModifyUpdateView(View):
+    def post(self, request):
+        modify_form = UploadInfoForm(request.POST)
+        if modify_form.is_valid():
+            email = request.POST.get("email", "")
+
+            # 把UserInfo的数据取到,然后把密码加密后修改密码并保存
+
+            user = UserInfo.objects.get(email=email)
+            user.is_staff = True
+            user.save()
+            # return render(request, 'reset_success.html')
+            return HttpResponseRedirect(reverse("login"))
+        else:
+            email = request.POST.get("email", "")
+            return render(request, "update_sure.html", {"email": email, "modify_form": modify_form})

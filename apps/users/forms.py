@@ -46,4 +46,14 @@ class UploadImageForm(forms.ModelForm):
 class UploadInfoForm(forms.ModelForm):
     class Meta:
         model = UserInfo
-        fields = ['nick_name', 'gender', 'email', 'phone', 'qq', 'summary']
+        fields = ['nick_name', 'gender', 'email', 'phone', 'qq', 'summary','birthday']
+
+# 请求升级
+class UpdateUseForm(forms.Form):
+    email = forms.EmailField(required=True)
+    captcha = CaptchaField(error_messages={"invalid": u"验证码错误"})
+
+# 确认升级
+class UpdateSureForm(forms.Form):
+    email = forms.EmailField(required=True)
+

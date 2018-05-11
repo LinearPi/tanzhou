@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views import View
-
+from django.db.models import Q
+from utils.mixin_utils import LoginRequiredMixin
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
-from course.models import CourseClass, CourseSort, Course, Lesson, Teacher
+from course.models import CourseClass, CourseSort, Course, Lesson, Teacher, Buy
 
 
 # Create your views here.
@@ -14,16 +15,32 @@ class CourseList(View):
         course_class = CourseClass.objects.all()
         course_sort = CourseSort.objects.all()
         all_course = Course.objects.all()
+        all_lesson = Lesson.objects.all()
 
         # 取出热门课程
         hot_course = all_course.order_by("-click_num")[:3]
+
+        # 课程搜索
+        search_keywords = request.GET.get('key', "")
+        if search_keywords:
+            #  准确查找
+            all_course = all_course.filter(
+                Q(name__icontains=search_keywords) | Q(describe__icontains=search_keywords))
+
+            # # 不精准查找
+            # all_course = all_course.filter(
+            #     Q(name__istartswith=search_keywords) | Q(describe__istartswith=search_keywords))
+
 
         # 取出第一分类的id
         class_id = request.GET.get('class_id', "")
         if class_id:
             course_class = course_class.filter(id=int(class_id))
+
             course_sort = course_sort.filter(classes_id=int(class_id))
+
             all_course = all_course.filter(sort__classes_id=int(class_id))
+            # all_lesson = all_lesson.filter(lesson_course__id=int(class_id))
 
         # 取出第二分类的di
         sort_id = request.GET.get('sort_id', "")
@@ -39,7 +56,7 @@ class CourseList(View):
             else:
                 all_course = all_course.filter(price__gt=0)
 
-
+        # 分页功能
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -56,7 +73,7 @@ class CourseList(View):
                                                    "sort_id": sort_id,
                                                    "class_id": class_id,
                                                    "hot_course": hot_course,
-                                                   "price": price
+                                                   "price": price,
                                                    })
 
 
@@ -97,6 +114,17 @@ class TestView(View):
         else:
             all_course = all_course.filter(price__gt=0)
 
+        return render(request, 'list.htm', {"all_course": all_course,
+                                            "price": price})
 
-        return render(request, 'list.htm', {"all_course":all_course,
-                                            "price":price})
+
+#  我的课程
+class MyCourseView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        user_courses = Buy.objects.filter(user=request.user)
+        user_courses.user= request.user
+
+        return render(request, 'my_course.html', {
+            "user_courses": user_courses
+        })

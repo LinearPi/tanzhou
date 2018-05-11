@@ -22,18 +22,20 @@
         </h1>
         <div class="fl cour-nav">
             <ul>
-                <li><a href="index.htm" target="_blank">首页</a></li>
-                <li><a href="list.htm" target="_blank">全部课程</a></li>
+                <li><a href="{% url 'index' %}" target="_blank">首页</a></li>
+                <li><a href="{% url 'course:list' %}" target="_blank">全部课程</a></li>
                 <li>
                     <a href="../help/downloadApp" target="_blank">客户端</a>
                 </li>
             </ul>
         </div>
         <div class="search fl w290">
+
             <div class="seainput w252">
                 <i class="icon searchimg fr cour-search" onclick="searchCourse();"></i>
                 <input type="text" placeholder="搜索课程" maxlength="15" id="searchKey" class="inputtext w203" value=""/>
             </div>
+
         </div>
         <!--登录 - 开始-->
 
@@ -43,7 +45,14 @@
 
                 <div class="thelogin " id="">
                     <div class="personal fr">
-                        <a href="{% url 'index' %}" target="_blank" class="perimg"><img id="imgId" src="{{ MEDIA_URL }}{{ request.user.image }}"></a>
+                        <a href="{% url 'index' %}" target="_blank" class="perimg">
+                        {% if  request.user.image %}
+                            <img src="{{ MEDIA_URL }}{{ request.user.image }}" alt="头像" width="110px" height="110px">
+                        {% else %}
+                            <img src="{% static 'images/default.png'%}" alt="头像">
+                        {% endif %}
+
+                        </a>
                         <div class="peohover">
                             <i class="icon pericon"></i>
                             <ul class="perul">
@@ -54,16 +63,18 @@
                             </ul>
                         </div>
                     </div>
+                {% if request.user.is_staff %}
                     <div class="loginbut fr">
-                        <div class="fr teacher none" id="isTeacher">
-                            <a href="../teacherAdmin/main.html#liveClass" style="color:#fff" target="_bank">教务管理</a>
+                        <div class="fr teacher " id="isTeacher">
+                            <a href="/admin" style="color:#fff" target="_bank">教务管理</a>
                         </div>
                     </div>
-                    <!-- <a href= " " target="_blank"  class="fr bidding " onclick="onJoinSchool()"> -->
-                    <!--  <a href="/entering" target="_blank" id="entering" class="fr bidding none" >
+                {% else %}
+                    <a href="/entering" target="_blank" id="entering" class="fr bidding ">
                          <i class="icon school"></i>申办学校 >
-                     </a> -->
-                </div>
+                     </a>
+                 {% endif %}
+            </div>
 
             {% else %}
                 <!--已登录展示效果 - 开始-->
@@ -143,10 +154,10 @@
     function searchCourse() {
         var searchKey = encodeURIComponent($("#searchKey").val().trim());
         var test = window.location.pathname;
-        if (test == "/course/search") {
-            location.href = "https://www.shiguangkey.com/course/search?key=" + searchKey + "&cateKey=" + searchKey;
+        if (test == "/course/list") {
+            location.href = "https://www.shiguangkey.com/course/list?key=" + searchKey ;
         } else {
-            window.open("/course/search?key=" + searchKey + "&cateKey=" + searchKey);
+            window.open("/course/list?key=" + searchKey );
         }
     }
 

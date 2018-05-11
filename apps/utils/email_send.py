@@ -50,3 +50,11 @@ def send_register_email(email, send_type="register"):
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
         if send_status:
             pass
+
+    if send_type == "update":
+
+        email_title = u"升级用户激活链接"
+        email_body = u"请点击下面的链接升级你的用户：http://192.168.83.128:8000/update/{0}".format(code)
+        send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+        if send_status:
+            pass

@@ -18,10 +18,9 @@ from django.contrib import admin
 from django.views.static import serve
 
 from users.views import IndexView, LoginView, LogoutView, RegisterView, ActiveUserView, ForgetPwdView, ResetView, \
-    ModifyPwdView
-from course.views import TestView
+    ModifyPwdView, UpdateUseView, UpdateView, ModifyUpdateView
+# from course.views import TestView
 from tanzhou.settings import MEDIA_ROOT
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -53,10 +52,18 @@ urlpatterns = [
     # 关于课程
     url(r'^course/', include('course.urls', namespace='course')),
 
-    #配置上传文件的访问处理函数
-    url(r'^media/(?P<path>.*)$',  serve, {"document_root":MEDIA_ROOT}),
+    # 配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 
-    # 关于测试
-    url(r'^test/', TestView.as_view(), name="modify_pwd"),
+    # 用户升级
+    url(r'^update_use/$', UpdateUseView.as_view(), name="update_use"),
+
+    # 确认用户升级
+    url(r'^update/(?P<update_code>.*)/$', UpdateView.as_view(), name='update'),
+
+    # 提交升级
+    url(r'^update_sure/$', ModifyUpdateView.as_view(), name="update_sure"),
+    # # 关于测试
+    # url(r'^test/', TestView.as_view(), name="modify_pwd"),
 
 ]
