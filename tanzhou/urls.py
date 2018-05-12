@@ -66,4 +66,8 @@ urlpatterns = [
     # # 关于测试
     # url(r'^test/', TestView.as_view(), name="modify_pwd"),
 
+    # 富文本相关的url
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+
+
 ]

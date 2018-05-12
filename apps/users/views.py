@@ -332,3 +332,9 @@ class ModifyUpdateView(View):
         else:
             email = request.POST.get("email", "")
             return render(request, "update_sure.html", {"email": email, "modify_form": modify_form})
+
+
+# 后面课程
+class BuyView(View):
+    def post(self, request):
+        pass

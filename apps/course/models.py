@@ -2,6 +2,8 @@ from django.db import models
 
 from datetime import datetime
 from users.models import UserInfo
+from ckeditor.fields import RichTextField
+from tanzhou.settings import CKEDITOR_CONFIGS
 
 
 # Create your models here.
@@ -16,7 +18,7 @@ class CourseClass(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.name
+        return self.get_name_display()
 
 
 class CourseSort(models.Model):
@@ -38,7 +40,7 @@ class Course(models.Model):
     learn_time = models.CharField(max_length=6, verbose_name=u"学习时长")
     nums = models.IntegerField(default=0, verbose_name=u"购买人数")
     image = models.ImageField(upload_to="img/%Y/%m", verbose_name=u"封面图")
-    describe = models.ImageField(upload_to="img/course/%Y/%m", verbose_name=u"描述")
+    describe = RichTextField(config_name='default_ckeditor', verbose_name=u'课程描述')
     click_num = models.IntegerField(default=0, verbose_name=u"点击人数")
 
     class Meta:

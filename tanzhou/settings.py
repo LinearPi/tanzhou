@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'bootstrap4',
     'captcha',
     'pure_pagination',
+    'ckeditor',    # 富文本的使用
+    'ckeditor_uploader',
+
 ]
 
 
@@ -95,6 +98,7 @@ WSGI_APPLICATION = 'tanzhou.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -167,4 +171,25 @@ EMAIL_FROM = "3003002865@qq.com"
 #  配置关于文件上传的设置
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# 关于ckediter富文本的配置
+# 只上传图片文件
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+# 上传路径设置
+CKEDITOR_UPLOAD_PATH = "uploads/"
+# 用于文件上传
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+# 富文本的内容
+CKEDITOR_CONFIGS = {
+    'default_ckeditor': {
+        'skin': 'moono',
+        'toolbar': 'Full',
+        'height': 300,
+        'width': '100%' ,
+    },
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}
 
