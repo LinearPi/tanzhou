@@ -17,9 +17,9 @@
             <div class="breadcrumbs">
                 <a href="{% url 'index' %}">首页</a>
                 <i>></i>
-                <a href="">{{ course.sort.classes.get_name_display }}</a>
+                <a href="{% url 'course:list' %}">{{ course.sort.classes.get_name_display }}</a>
                 <i>></i>
-                <a href="">{{ course.sort.name }}</a>
+                <a href="{% url 'course:list' %}">{{ course.sort.name }}</a>
                 <i>></i>
                 <span>{{ course.name }}</span>
             </div>
@@ -104,11 +104,19 @@
                         <div class="cour-but">
                             <div class="notbuy courbut-all">
                                 <!--VIP按钮-  开始-->
+
+
                                 <div class="fl">
                                     <!-- -1下架 1未购买 2没权限 3未分班 4已结束 5招生中 6未登录-->
                                     <!--立即购买-->
-                                    <a href="" data-type="6810" data-bid="1111" data-course="1111"
+
+                                    <a href="{% url 'course:buy' course.id %}" data-type="6810" data-bid="1111" data-course="1111"
                                        id="vipApplyButton" class="notb-immedi notbg-red buy-btn">立即购买</a>
+
+                                </div>
+
+                                <div>
+                                    {{ course.course_buy_count }}
                                 </div>
                                 <!--在线咨询 - 开始-->
                                 <!-- <div class="live-but">

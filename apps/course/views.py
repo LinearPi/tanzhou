@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 from django.db.models import Q
+from django.shortcuts import render, redirect, resolve_url, HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
 from utils.mixin_utils import LoginRequiredMixin
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
@@ -30,7 +33,6 @@ class CourseList(View):
             # # 不精准查找
             # all_course = all_course.filter(
             #     Q(name__istartswith=search_keywords) | Q(describe__istartswith=search_keywords))
-
 
         # 取出第一分类的id
         class_id = request.GET.get('class_id', "")
@@ -80,7 +82,6 @@ class CourseList(View):
 class CourseDetailView(View):
     def get(self, request, course_id):
         course = Course.objects.get(id=int(course_id))
-
         # 每次点击进页面之后增加点击数
         course.click_num += 1
         course.save()
@@ -118,13 +119,35 @@ class TestView(View):
                                             "price": price})
 
 
+class BuyCourseView(View):
+    def get(self, request, course_id):
+        buy_course = Buy()
+        buy_course.course_id = course_id
+        buy_course.user_id = buy_course.objects.filter(course_id=course_id)
+        buy_course.user_id = request.user.id
+        buy_course.save()
+        course = Course.objects.get(id=course_id)
+
+        # 返回老师的数据
+        teacher = Teacher.objects.get(teacher_course_id=course_id)
+
+        # return redirect(reverse("details"),{"course":course})
+        # return redirect(resolve_url("details"), {"course": course})
+        # return HttpResponseRedirect('/')
+        return render(request, 'course_detail.htm', {"course": course,
+                                                     "teacher": teacher})
+
+        # return HttpResponseRedirect(reverse("" course.id))
+        # return render(request, 'course_detail.htm', {"course": course})
+
+
 #  我的课程
 class MyCourseView(LoginRequiredMixin, View):
 
     def get(self, request):
         user_courses = Buy.objects.filter(user=request.user)
-        user_courses.user= request.user
+        user_courses.user = request.user
 
-        return render(request, 'my_course.html', {
+        return render(request, 'course_detail.htm', {
             "user_courses": user_courses
         })
