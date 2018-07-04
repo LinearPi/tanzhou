@@ -63,7 +63,8 @@ urlpatterns = [
 
     # 提交升级
     url(r'^update_sure/$', ModifyUpdateView.as_view(), name="update_sure"),
-    # # 关于测试
+
+    # 关于测试
     # url(r'^test/', TestView.as_view(), name="modify_pwd"),
 
 ]

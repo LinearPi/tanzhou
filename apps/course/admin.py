@@ -23,9 +23,9 @@ class CourseClassAdmin(admin.ModelAdmin):
 
 
 class CourseSortAdmin(admin.ModelAdmin):
-    list_display = ["name"]
+    list_display = ["name","classes"]
     list_filter = ["name"]
-    search_fields = ["name"]
+    search_fields = ["name","classes__name"]
 
 
 class LessonInline(admin.TabularInline):  # 在课程下面显示章节的

@@ -245,7 +245,11 @@ class UserWorkView(LoginRequiredMixin, View):
 class UserCourseView(LoginRequiredMixin, View):
     def get(self, request):
         page_name = "course"
-        return render(request, 'my_course.html', {"page_name": page_name})
+        courses = Course.objects.filter(buy__user_id=request.user.id)
+        print(courses)
+        return render(request, 'my_course.html', {"page_name": page_name,
+                                                  "courses": courses,
+                                                  })
 
     def post(self, request):
         pass

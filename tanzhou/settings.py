@@ -152,7 +152,6 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 1,
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
 }
-
 # QQ 邮箱发送
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 465  # SSL  # 第三种配置方式
@@ -163,6 +162,7 @@ EMAIL_HOST_PASSWORD = "xtyxxnyonltqdfgf"
 # EMAIL_USE_TLS = True  #第一种配置方式 # 第二种配置方式
 EMAIL_USE_SSL = True   #第三种配置方式
 EMAIL_FROM = "3003002865@qq.com"
+
 
 #  配置关于文件上传的设置
 MEDIA_URL = '/media/'
